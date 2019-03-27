@@ -12,3 +12,20 @@
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
+
+#example {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-header {
+  font-size: 2rem;
+  text-align: center;
+}
+
+.card-body {
+  text-align: center;
+}
