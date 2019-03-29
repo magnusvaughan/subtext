@@ -35,6 +35,7 @@ import axios from 'axios'
 
         axios.post('/api/projects', project)
           .then(response => {
+            console.log(response);
             // redirect to the homepage
             history.push('/')
           })

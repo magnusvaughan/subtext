@@ -6,13 +6,15 @@ class SingleProject extends Component {
     super(props)
     this.state = {
       project: {},
-      tasks: []
+      tasks: [],
+      title: '',
+      errors: {}
     }
 
     this.handleMarkProjectAsCompleted = this.handleMarkProjectAsCompleted.bind(this)
     this.handleFieldChange = this.handleFieldChange.bind(this)
     this.handleAddNewTask = this.handleAddNewTask.bind(this)
-    this.hasErrorFor = this.hasErrorFor.bind(this)
+    this.hasErrorFor = this.hasErrorFor.bind(this) 
     this.renderErrorFor = this.renderErrorFor.bind(this)
 
   }
@@ -105,7 +107,7 @@ class SingleProject extends Component {
 
                 <button
                 className='btn btn-primary btn-sm'
-                onClick={this.handleMarkProjectAsCompleted.bind(this,task.id)}
+                onClick={this.handleMarkProjectAsCompleted.bind(this,project.id)}
                 >
                 Mark as completed
                 </button>
@@ -137,7 +139,9 @@ class SingleProject extends Component {
                     >
                       {task.title}
 
-                      <button className='btn btn-primary btn-sm'>
+                      <button className='btn btn-primary btn-sm'
+                      onClick={this.handleMarkTaskAsCompleted.bind(this,task.id)}
+                      >
                         Mark as completed
                       </button>
                     </li>
