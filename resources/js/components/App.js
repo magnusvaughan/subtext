@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Header from './Header'
-import NewProject from './NewProject'
+import NewStory from './NewStory'
 import StoryList from './StoryList'
-import SingleProject from './SingleProject'
+import SingleStory from './SingleStory'
 
 class App extends Component {
     render () {
@@ -14,8 +14,8 @@ class App extends Component {
             <Header />
             <Switch>
                 <Route exact path='/' component={StoryList} />
-                <Route path='/create' component={NewProject} />
-                <Route path='/:id' component={SingleProject} />
+                <Route path='/create' component={NewStory} />
+                <Route path='/:id' component={SingleStory} />
             </Switch>
         </div>
         </BrowserRouter>

@@ -15,7 +15,7 @@ class StoryList extends Component {
   componentDidMount () {
     axios.get('/api/stories').then(response => {
       this.setState({
-        projects: response.data
+        stories: response.data
       })
     })
   }

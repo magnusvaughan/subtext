@@ -65402,9 +65402,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _Header__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Header */ "./resources/js/components/Header.js");
-/* harmony import */ var _NewProject__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./NewProject */ "./resources/js/components/NewProject.js");
+/* harmony import */ var _NewStory__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./NewStory */ "./resources/js/components/NewStory.js");
 /* harmony import */ var _StoryList__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./StoryList */ "./resources/js/components/StoryList.js");
-/* harmony import */ var _SingleProject__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./SingleProject */ "./resources/js/components/SingleProject.js");
+/* harmony import */ var _SingleStory__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./SingleStory */ "./resources/js/components/SingleStory.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -65451,10 +65451,10 @@ function (_Component) {
         component: _StoryList__WEBPACK_IMPORTED_MODULE_5__["default"]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
         path: "/create",
-        component: _NewProject__WEBPACK_IMPORTED_MODULE_4__["default"]
+        component: _NewStory__WEBPACK_IMPORTED_MODULE_4__["default"]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
         path: "/:id",
-        component: _SingleProject__WEBPACK_IMPORTED_MODULE_6__["default"]
+        component: _SingleStory__WEBPACK_IMPORTED_MODULE_6__["default"]
       }))));
     }
   }]);
@@ -65497,10 +65497,10 @@ var Header = function Header() {
 
 /***/ }),
 
-/***/ "./resources/js/components/NewProject.js":
-/*!***********************************************!*\
-  !*** ./resources/js/components/NewProject.js ***!
-  \***********************************************/
+/***/ "./resources/js/components/NewStory.js":
+/*!*********************************************!*\
+  !*** ./resources/js/components/NewStory.js ***!
+  \*********************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -65533,49 +65533,47 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-var NewProject =
+var NewStory =
 /*#__PURE__*/
 function (_Component) {
-  _inherits(NewProject, _Component);
+  _inherits(NewStory, _Component);
 
-  function NewProject(props) {
+  function NewStory(props) {
     var _this;
 
-    _classCallCheck(this, NewProject);
+    _classCallCheck(this, NewStory);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(NewProject).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(NewStory).call(this, props));
     _this.state = {
       name: '',
       description: '',
       errors: []
     };
     _this.handleFieldChange = _this.handleFieldChange.bind(_assertThisInitialized(_this));
-    _this.handleCreateNewProject = _this.handleCreateNewProject.bind(_assertThisInitialized(_this));
+    _this.handleCreateNewStory = _this.handleCreateNewStory.bind(_assertThisInitialized(_this));
     _this.hasErrorFor = _this.hasErrorFor.bind(_assertThisInitialized(_this));
     _this.renderErrorFor = _this.renderErrorFor.bind(_assertThisInitialized(_this));
     return _this;
   }
 
-  _createClass(NewProject, [{
+  _createClass(NewStory, [{
     key: "handleFieldChange",
     value: function handleFieldChange(event) {
       this.setState(_defineProperty({}, event.target.name, event.target.value));
     }
   }, {
-    key: "handleCreateNewProject",
-    value: function handleCreateNewProject(event) {
+    key: "handleCreateNewStory",
+    value: function handleCreateNewStory(event) {
       var _this2 = this;
 
       event.preventDefault();
       var history = this.props.history;
-      var project = {
+      var story = {
         name: this.state.name,
         description: this.state.description
       };
-      console.log(this.state);
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/projects', project).then(function (response) {
-        console.log(response); // redirect to the homepage
-
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/stories', story).then(function (response) {
+        // redirect to the homepage
         history.push('/');
       }).catch(function (error) {
         _this2.setState({
@@ -65610,15 +65608,15 @@ function (_Component) {
         className: "card"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "card-header"
-      }, "Create new project"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+      }, "Create new story"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "card-body"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("form", {
-        onSubmit: this.handleCreateNewProject
+        onSubmit: this.handleCreateNewStory
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "form-group"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
         htmlFor: "name"
-      }, "Project name"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
+      }, "Story name"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
         id: "name",
         type: "text",
         className: "form-control ".concat(this.hasErrorFor('name') ? 'is-invalid' : ''),
@@ -65629,7 +65627,7 @@ function (_Component) {
         className: "form-group"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
         htmlFor: "description"
-      }, "Project description"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("textarea", {
+      }, "Story description"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("textarea", {
         id: "description",
         className: "form-control ".concat(this.hasErrorFor('description') ? 'is-invalid' : ''),
         name: "description",
@@ -65642,17 +65640,17 @@ function (_Component) {
     }
   }]);
 
-  return NewProject;
+  return NewStory;
 }(react__WEBPACK_IMPORTED_MODULE_1__["Component"]);
 
-/* harmony default export */ __webpack_exports__["default"] = (NewProject);
+/* harmony default export */ __webpack_exports__["default"] = (NewStory);
 
 /***/ }),
 
-/***/ "./resources/js/components/SingleProject.js":
-/*!**************************************************!*\
-  !*** ./resources/js/components/SingleProject.js ***!
-  \**************************************************/
+/***/ "./resources/js/components/SingleStory.js":
+/*!************************************************!*\
+  !*** ./resources/js/components/SingleStory.js ***!
+  \************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -65683,64 +65681,41 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-var SingleProject =
+var SingleStory =
 /*#__PURE__*/
 function (_Component) {
-  _inherits(SingleProject, _Component);
+  _inherits(SingleStory, _Component);
 
-  function SingleProject(props) {
+  function SingleStory(props) {
     var _this;
 
-    _classCallCheck(this, SingleProject);
+    _classCallCheck(this, SingleStory);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(SingleProject).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(SingleStory).call(this, props));
     _this.state = {
-      project: {},
-      tasks: [],
+      story: {},
+      turns: [],
       title: '',
+      turn_text: '',
       errors: {}
     };
-    _this.handleMarkProjectAsCompleted = _this.handleMarkProjectAsCompleted.bind(_assertThisInitialized(_this));
     _this.handleFieldChange = _this.handleFieldChange.bind(_assertThisInitialized(_this));
-    _this.handleAddNewTask = _this.handleAddNewTask.bind(_assertThisInitialized(_this));
+    _this.handleAddNewTurn = _this.handleAddNewTurn.bind(_assertThisInitialized(_this));
     _this.hasErrorFor = _this.hasErrorFor.bind(_assertThisInitialized(_this));
     _this.renderErrorFor = _this.renderErrorFor.bind(_assertThisInitialized(_this));
     return _this;
   }
 
-  _createClass(SingleProject, [{
+  _createClass(SingleStory, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       var _this2 = this;
 
-      var projectId = this.props.match.params.id;
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/projects/".concat(projectId)).then(function (response) {
+      var storyId = this.props.match.params.id;
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/stories/".concat(storyId)).then(function (response) {
         _this2.setState({
-          project: response.data,
-          tasks: response.data.tasks
-        });
-      });
-    }
-  }, {
-    key: "handleMarkProjectAsCompleted",
-    value: function handleMarkProjectAsCompleted() {
-      var history = this.props.history;
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("/api/projects/".concat(this.state.project.id)).then(function (response) {
-        return history.push('/');
-      });
-    }
-  }, {
-    key: "handleMarkTaskAsCompleted",
-    value: function handleMarkTaskAsCompleted(taskId) {
-      var _this3 = this;
-
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("/api/tasks/".concat(taskId)).then(function (response) {
-        _this3.setState(function (prevState) {
-          return {
-            tasks: prevState.tasks.filter(function (task) {
-              return task.id !== taskId;
-            })
-          };
+          story: response.data,
+          turns: response.data.turns
         });
       });
     }
@@ -65748,33 +65723,33 @@ function (_Component) {
     key: "handleFieldChange",
     value: function handleFieldChange(event) {
       this.setState({
-        title: event.target.value
+        turn_text: event.target.value
       });
     }
   }, {
-    key: "handleAddNewTask",
-    value: function handleAddNewTask(event) {
-      var _this4 = this;
+    key: "handleAddNewTurn",
+    value: function handleAddNewTurn(event) {
+      var _this3 = this;
 
       event.preventDefault();
-      var task = {
-        title: this.state.title,
-        project_id: this.state.project.id
+      var turn = {
+        turn_text: this.state.turn_text,
+        story_id: this.state.story.id
       };
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/tasks', task).then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/turns', turn).then(function (response) {
         // clear form input
-        _this4.setState({
-          title: ''
+        _this3.setState({
+          turn_text: ''
         }); // add new task to list of tasks
 
 
-        _this4.setState(function (prevState) {
+        _this3.setState(function (prevState) {
           return {
-            tasks: prevState.tasks.concat(response.data)
+            turns: prevState.turns.concat(response.data)
           };
         });
       }).catch(function (error) {
-        _this4.setState({
+        _this3.setState({
           errors: error.response.data.errors
         });
       });
@@ -65796,11 +65771,9 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this5 = this;
-
       var _this$state = this.state,
-          project = _this$state.project,
-          tasks = _this$state.tasks;
+          story = _this$state.story,
+          turns = _this$state.turns;
       return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "container py-4"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
@@ -65811,44 +65784,38 @@ function (_Component) {
         className: "card"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "card-header"
-      }, project.name), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+      }, story.name), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "card-body"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, project.description), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "btn btn-primary btn-sm",
-        onClick: this.handleMarkProjectAsCompleted.bind(this, project.id)
-      }, "Mark as completed"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("form", {
-        onSubmit: this.handleAddNewTask
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, story.description), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("ul", {
+        className: "list-group mt-3"
+      }, turns.map(function (turn) {
+        return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
+          className: "list-group-item d-flex justify-content-between align-items-center",
+          key: turn.id
+        }, turn.turn_text);
+      })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("form", {
+        onSubmit: this.handleAddNewTurn
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "input-group"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
         type: "text",
         name: "title",
-        className: "form-control ".concat(this.hasErrorFor('title') ? 'is-invalid' : ''),
-        placeholder: "Task title",
-        value: this.state.title,
+        className: "form-control ".concat(this.hasErrorFor('turn_text') ? 'is-invalid' : ''),
+        placeholder: "Task Text",
+        value: this.state.turn_text,
         onChange: this.handleFieldChange
       }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "input-group-append"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         className: "btn btn-primary"
-      }, "Add")), this.renderErrorFor('title'))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("ul", {
-        className: "list-group mt-3"
-      }, tasks.map(function (task) {
-        return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
-          className: "list-group-item d-flex justify-content-between align-items-center",
-          key: task.id
-        }, task.title, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-          className: "btn btn-primary btn-sm",
-          onClick: _this5.handleMarkTaskAsCompleted.bind(_this5, task.id)
-        }, "Mark as completed"));
-      })))))));
+      }, "Add")), this.renderErrorFor('turn_text'))))))));
     }
   }]);
 
-  return SingleProject;
+  return SingleStory;
 }(react__WEBPACK_IMPORTED_MODULE_1__["Component"]);
 
-/* harmony default export */ __webpack_exports__["default"] = (SingleProject);
+/* harmony default export */ __webpack_exports__["default"] = (SingleStory);
 
 /***/ }),
 
@@ -65913,7 +65880,7 @@ function (_Component) {
 
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/stories').then(function (response) {
         _this2.setState({
-          projects: response.data
+          stories: response.data
         });
       });
     }

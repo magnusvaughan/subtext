@@ -22,4 +22,7 @@ Route::put('projects/{project}', 'ProjectController@markAsCompleted');
 Route::post('tasks', 'TaskController@store');
 Route::put('tasks/{task}', 'TaskController@markAsCompleted');
 
-Route::get('stories', 'StoriesController@index');
+Route::get('stories', 'StoryController@index');
+Route::post('stories', 'StoryController@store');
+Route::get('stories/{id}', 'StoryController@show');
+Route::post('turns', 'TurnController@store');

@@ -1,7 +1,7 @@
 import axios from 'axios'
     import React, { Component } from 'react'
 
-    class NewProject extends Component {
+    class NewStory extends Component {
       constructor (props) {
         super(props)
         this.state = {
@@ -10,7 +10,7 @@ import axios from 'axios'
           errors: []
         }
         this.handleFieldChange = this.handleFieldChange.bind(this)
-        this.handleCreateNewProject = this.handleCreateNewProject.bind(this)
+        this.handleCreateNewStory = this.handleCreateNewStory.bind(this)
         this.hasErrorFor = this.hasErrorFor.bind(this)
         this.renderErrorFor = this.renderErrorFor.bind(this)
       }
@@ -21,21 +21,18 @@ import axios from 'axios'
         })
       }
 
-      handleCreateNewProject (event) {
+      handleCreateNewStory (event) {
         event.preventDefault()
 
         const { history } = this.props
 
-        const project = {
+        const story = {
           name: this.state.name,
           description: this.state.description
         }
 
-        console.log(this.state);
-
-        axios.post('/api/projects', project)
+        axios.post('/api/stories', story)
           .then(response => {
-            console.log(response);
             // redirect to the homepage
             history.push('/')
           })
@@ -66,11 +63,11 @@ import axios from 'axios'
             <div className='row justify-content-center'>
               <div className='col-md-6'>
                 <div className='card'>
-                  <div className='card-header'>Create new project</div>
+                  <div className='card-header'>Create new story</div>
                   <div className='card-body'>
-                    <form onSubmit={this.handleCreateNewProject}>
+                    <form onSubmit={this.handleCreateNewStory}>
                       <div className='form-group'>
-                        <label htmlFor='name'>Project name</label>
+                        <label htmlFor='name'>Story name</label>
                         <input
                           id='name'
                           type='text'
@@ -82,7 +79,7 @@ import axios from 'axios'
                         {this.renderErrorFor('name')}
                       </div>
                       <div className='form-group'>
-                        <label htmlFor='description'>Project description</label>
+                        <label htmlFor='description'>Story description</label>
                         <textarea
                           id='description'
                           className={`form-control ${this.hasErrorFor('description') ? 'is-invalid' : ''}`}
@@ -104,4 +101,4 @@ import axios from 'axios'
       }
     }
 
-    export default NewProject
+    export default NewStory
