@@ -113,7 +113,7 @@ class SingleStory extends Component {
                         onChange={this.handleFieldChange}
                         />
                         <div className='input-group-append'>
-                        <button className='btn btn-primary'>Add</button>
+                        <button className='btn btn-primary'>Add turn</button>
                         </div>
                         {this.renderErrorFor('turn_text')}
                     </div>
