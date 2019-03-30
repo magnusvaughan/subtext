@@ -1,6 +1,8 @@
 
 // Fonts
+@import url('https://fonts.googleapis.com/css?family=Kalam');
 @import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url('https://fonts.googleapis.com/css?family=Inconsolata');
 
 // Variables
 @import 'variables';
@@ -27,5 +29,48 @@
 }
 
 .card-body {
+  font-family: 'Arvo', serif;
   text-align: center;
+  font-size: 1.25rem;
+}
+
+img {
+  height:300px; 
+  width:500px;
+}
+
+// Turns
+
+.turn {
+  animation: slideIn 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+.list-group-item {
+  position: relative;
+  justify-content: center;
+  img {
+
+  }
+  span {
+    position: absolute;  
+    left: 50%;                        /* horizontal alignment */
+    bottom: 0%;                         /* vertical alignment */
+    transform: translate(-50%, -50%);
+    color: white;
+    background-color: rgba($color: #000000, $alpha: 0.6);
+    padding: 0.25rem 0.5rem;
+    text-shadow: 1px 1px 1px #000;
+    font-family: 'Inconsolata', monospace;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translate3d(-20rem, 0, 500rem);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
 }

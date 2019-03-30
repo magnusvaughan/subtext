@@ -1,16 +1,17 @@
 import axios from 'axios'
-import React, { Component } from 'react'
+    import React, { Component } from 'react'
 
-    class NewStory extends Component {
+    class NewSong extends Component {
       constructor (props) {
         super(props)
         this.state = {
           name: '',
-          description: '',
+          lyrics: '',
+          artist: '',
           errors: []
         }
         this.handleFieldChange = this.handleFieldChange.bind(this)
-        this.handleCreateNewStory = this.handleCreateNewStory.bind(this)
+        this.handleCreateNewsong = this.handleCreateNewsong.bind(this)
         this.hasErrorFor = this.hasErrorFor.bind(this)
         this.renderErrorFor = this.renderErrorFor.bind(this)
       }
@@ -21,17 +22,18 @@ import React, { Component } from 'react'
         })
       }
 
-      handleCreateNewStory (event) {
+      handleCreateNewsong (event) {
         event.preventDefault()
 
         const { history } = this.props
 
-        const story = {
+        const song = {
           name: this.state.name,
-          description: this.state.description
+          artist: this.state.artist,
+          lyrics: this.state.lyrics
         }
 
-        axios.post('/api/stories', story)
+        axios.post('/api/songs', song)
           .then(response => {
             // redirect to the homepage
             history.push('/')
@@ -63,11 +65,11 @@ import React, { Component } from 'react'
             <div className='row justify-content-center'>
               <div className='col-md-6'>
                 <div className='card'>
-                  <div className='card-header'>Create new story</div>
+                  <div className='card-header'>Gif up some lyrics</div>
                   <div className='card-body'>
-                    <form onSubmit={this.handleCreateNewStory}>
+                    <form onSubmit={this.handleCreateNewsong}>
                       <div className='form-group'>
-                        <label htmlFor='name'>Story name</label>
+                        <label htmlFor='name'>Song Name</label>
                         <input
                           id='name'
                           type='text'
@@ -77,18 +79,31 @@ import React, { Component } from 'react'
                           onChange={this.handleFieldChange}
                         />
                         {this.renderErrorFor('name')}
+
                       </div>
-                      <div className='form-group'>
-                        <label htmlFor='description'>Story description</label>
-                        <textarea
-                          id='description'
-                          className={`form-control ${this.hasErrorFor('description') ? 'is-invalid' : ''}`}
-                          name='description'
-                          rows='10'
-                          value={this.state.description}
+                      <div className="form-group">
+                      <label htmlFor='artist'>Artist</label>
+                        <input
+                          id='artist'
+                          type='text'
+                          className={`form-control ${this.hasErrorFor('artist') ? 'is-invalid' : ''}`}
+                          name='artist'
+                          value={this.state.artist}
                           onChange={this.handleFieldChange}
                         />
-                        {this.renderErrorFor('description')}
+                        {this.renderErrorFor('artist')}
+                      </div>
+                      <div className='form-group'>
+                        <label htmlFor='lyrics'>Song lyrics</label>
+                        <textarea
+                          id='lyrics'
+                          className={`form-control ${this.hasErrorFor('lyrics') ? 'is-invalid' : ''}`}
+                          name='lyrics'
+                          rows='10'
+                          value={this.state.lyrics}
+                          onChange={this.handleFieldChange}
+                        />
+                        {this.renderErrorFor('lyrics')}
                       </div>
                       <button className='btn btn-primary'>Create</button>
                     </form>
@@ -101,4 +116,4 @@ import React, { Component } from 'react'
       }
     }
 
-    export default NewStory
+    export default NewSong

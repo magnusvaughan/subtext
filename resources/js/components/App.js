@@ -3,8 +3,13 @@ import ReactDOM from 'react-dom'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Header from './Header'
 import NewStory from './NewStory'
+import NewSong from './NewSong'
 import StoryList from './StoryList'
 import SingleStory from './SingleStory'
+import SingleSong from './SingleSong'
+import MainMenu from './MainMenu'
+import LyricsList from './LyricsList'
+import SongList from './SongList'
 
 class App extends Component {
     render () {
@@ -13,9 +18,14 @@ class App extends Component {
         <div>
             <Header />
             <Switch>
-                <Route exact path='/' component={StoryList} />
-                <Route path='/create' component={NewStory} />
-                <Route path='/:id' component={SingleStory} />
+                <Route exact path='/' component={MainMenu} />
+                <Route exact path='/stories' component={StoryList} />
+                <Route exact path='/lyrics' component={LyricsList} />
+                <Route exact path='/songs' component={SongList} />
+                <Route path='/create/story' component={NewStory} />
+                <Route path='/create/song' component={NewSong} />
+                {/* <Route path='/story/:id' component={SingleStory} /> */}
+                <Route path='/:id' component={SingleSong} />
             </Switch>
         </div>
         </BrowserRouter>

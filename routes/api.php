@@ -15,14 +15,12 @@ use Illuminate\Http\Request;
 
 // routes/api.php
 
-Route::get('projects', 'ProjectController@index');
-Route::post('projects', 'ProjectController@store');
-Route::get('projects/{id}', 'ProjectController@show');
-Route::put('projects/{project}', 'ProjectController@markAsCompleted');
-Route::post('tasks', 'TaskController@store');
-Route::put('tasks/{task}', 'TaskController@markAsCompleted');
-
 Route::get('stories', 'StoryController@index');
 Route::post('stories', 'StoryController@store');
 Route::get('stories/{id}', 'StoryController@show');
 Route::post('turns', 'TurnController@store');
+
+Route::get('songs', 'SongController@index');
+Route::post('songs', 'SongController@store');
+Route::get('songs/{id}', 'SongController@show');
+Route::post('lyrics', 'LyricController@store');

@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Kalam);@import url(https://fonts.googleapis.com/css?family=Nunito);@import url(https://fonts.googleapis.com/css?family=Inconsolata);@charset "UTF-8";
 
 /*!
  * Bootstrap v4.3.1 (https://getbootstrap.com/)
@@ -10674,6 +10674,66 @@ a.text-dark:focus {
 }
 
 .card-body {
+  font-family: "Arvo", serif;
   text-align: center;
+  font-size: 1.25rem;
+}
+
+img {
+  height: 300px;
+  width: 500px;
+}
+
+.turn {
+  -webkit-animation: slideIn 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+          animation: slideIn 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+.list-group-item {
+  position: relative;
+  justify-content: center;
+}
+
+.list-group-item span {
+  position: absolute;
+  left: 50%;
+  /* horizontal alignment */
+  bottom: 0%;
+  /* vertical alignment */
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  color: white;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 0.25rem 0.5rem;
+  text-shadow: 1px 1px 1px #000;
+  font-family: "Inconsolata", monospace;
+}
+
+@-webkit-keyframes slideIn {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(-20rem, 0, 500rem);
+            transform: translate3d(-20rem, 0, 500rem);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(-20rem, 0, 500rem);
+            transform: translate3d(-20rem, 0, 500rem);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+  }
 }
 

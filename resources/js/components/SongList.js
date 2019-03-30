@@ -2,45 +2,44 @@ import axios from 'axios'
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
-class StoryList extends Component {
+class SongList extends Component {
   constructor () {
     super()
     this.state = {
-      stories: []
+      songs: []
     }
   }
 
   componentDidMount () {
-    axios.get('/api/stories').then(response => {
+    axios.get('/api/songs').then(response => {
       this.setState({
-        stories: response.data
+        songs: response.data
       })
     })
   }
 
   render () {
-    const { stories } = this.state
+    const { songs } = this.state
     return (
       <div className='container py-4'>
         <div className='row justify-content-center'>
           <div className='col-md-8'>
             <div className='card'>
-              <div className='card-header'>All stories</div>
+              <div className='card-header'>All songs</div>
               <div className='card-body'>
-                <Link className='btn btn-primary btn-sm mb-3' to='/create/story'>
-                  Create new story
+                <Link className='btn btn-primary btn-sm mb-3' to='/create/song'>
+                  Create new song
                 </Link>
                 <ul className='list-group list-group-flush'>
-                  {stories.map(story => (
+                  {songs.map(song => (
                     <Link
                       className='list-group-item list-group-item-action d-flex justify-content-between align-items-center'
-                      to={`/${story.id}`}
-                      key={story.id}
+                      to={`/${song.id}`}
+                      key={song.id}
                     >
-                      {story.name}
-                      <span className='badge badge-primary badge-pill'>
-                        {story.turn_count}
-                      </span>
+                      {song.name}
+                      {song.artist}
+
                     </Link>
                   ))}
                 </ul>
@@ -53,4 +52,4 @@ class StoryList extends Component {
   }
 }
 
-export default StoryList
+export default SongList

@@ -1,8 +1,10 @@
+// resources/assets/js/components/ProjectsList.js
+
 import axios from 'axios'
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
-class StoryList extends Component {
+class LyricsList extends Component {
   constructor () {
     super()
     this.state = {
@@ -25,10 +27,10 @@ class StoryList extends Component {
         <div className='row justify-content-center'>
           <div className='col-md-8'>
             <div className='card'>
-              <div className='card-header'>All stories</div>
+              <div className='card-header'>All Lyrics</div>
               <div className='card-body'>
-                <Link className='btn btn-primary btn-sm mb-3' to='/create/story'>
-                  Create new story
+                <Link className='btn btn-primary btn-sm mb-3' to='/create'>
+                  Giff up some lyrics
                 </Link>
                 <ul className='list-group list-group-flush'>
                   {stories.map(story => (
@@ -53,4 +55,4 @@ class StoryList extends Component {
   }
 }
 
-export default StoryList
+export default LyricsList

@@ -5,6 +5,7 @@ class SingleStory extends Component {
   constructor (props) {
     super(props)
     this.state = {
+      playerOneTurn: true,
       story: {},
       turns: [],
       title: '',
@@ -12,10 +13,10 @@ class SingleStory extends Component {
       errors: {}
     }
 
-    this.handleFieldChange = this.handleFieldChange.bind(this)
-    this.handleAddNewTurn = this.handleAddNewTurn.bind(this)
-    this.hasErrorFor = this.hasErrorFor.bind(this) 
-    this.renderErrorFor = this.renderErrorFor.bind(this)
+    this.handleFieldChange = this.handleFieldChange.bind(this);
+    this.handleAddNewTurn = this.handleAddNewTurn.bind(this);
+    this.hasErrorFor = this.hasErrorFor.bind(this);
+    this.renderErrorFor = this.renderErrorFor.bind(this);
 
   }
 
@@ -50,10 +51,14 @@ class SingleStory extends Component {
         this.setState({
           turn_text: ''
         })
-        // add new task to list of tasks
+        // add new turn to the to the story
         this.setState(prevState => ({
           turns: prevState.turns.concat(response.data)
         }))
+        //Switch to next player's turn
+        this.setState({
+          playerOneTurn: !this.state.playerOneTurn
+        })
       })
       .catch(error => {
         this.setState({
@@ -82,7 +87,7 @@ class SingleStory extends Component {
     return (
       <div className='container py-4'>
         <div className='row justify-content-center'>
-          <div className='col-md-8'>
+          <div className='col-md-12'>
             <div className='card'>
               <div className='card-header'>{story.name}</div>
               <div className='card-body'>
@@ -91,10 +96,12 @@ class SingleStory extends Component {
                 <ul className='list-group mt-3'>
                   {turns.map(turn => (
                     <li
-                      className='list-group-item d-flex justify-content-between align-items-center'
+                      className='list-group-item d-flex align-items-center turn'
                       key={turn.id}
                     >
-                      {turn.turn_text}
+                      <span>{turn.turn_text}</span>
+
+                      <img src={turn.image_url} alt=""/>
 
                     </li>
                   ))}
@@ -108,7 +115,7 @@ class SingleStory extends Component {
                         type='text'
                         name='title'
                         className={`form-control ${this.hasErrorFor('turn_text') ? 'is-invalid' : ''}`}
-                        placeholder='Task Text'
+                        placeholder={'Continue the story, player ' + (this.state.playerOneTurn ? 'one.' : 'two')}
                         value={this.state.turn_text}
                         onChange={this.handleFieldChange}
                         />
