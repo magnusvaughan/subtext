@@ -42,7 +42,7 @@ class SingleSong extends Component {
     return (
       <div className='container py-4'>
         <div className='row justify-content-center'>
-          <div className='col-md-12'>
+          <div className='col-md-9'>
             <div className='card'>
               <div className='card-header'>{song.name} - {song.artist}</div>
               <div className='card-body'>

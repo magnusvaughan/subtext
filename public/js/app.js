@@ -66113,7 +66113,7 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "row justify-content-center"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "col-md-12"
+        className: "col-md-9"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "card"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
@@ -66548,8 +66548,8 @@ function (_Component) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/magnusvaughan/side/consequences/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/magnusvaughan/side/consequences/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/magnusvaughan/side/subtext/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/magnusvaughan/side/subtext/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
