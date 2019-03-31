@@ -65458,7 +65458,7 @@ function (_Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Header__WEBPACK_IMPORTED_MODULE_3__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
         exact: true,
         path: "/",
-        component: _MainMenu__WEBPACK_IMPORTED_MODULE_9__["default"]
+        component: _SongList__WEBPACK_IMPORTED_MODULE_11__["default"]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
         exact: true,
         path: "/stories",
@@ -65515,7 +65515,7 @@ var Header = function Header() {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     className: "navbar-brand",
     to: "/"
-  }, "Consequences")));
+  }, "Subtext")));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Header);
@@ -65789,7 +65789,7 @@ function (_Component) {
       };
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/songs', song).then(function (response) {
         // redirect to the homepage
-        history.push('/');
+        history.push("/".concat(response.data.id));
       }).catch(function (error) {
         _this2.setState({
           errors: error.response.data.errors
@@ -66118,7 +66118,7 @@ function (_Component) {
         className: "card"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "card-header"
-      }, song.name), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+      }, song.name, " - ", song.artist), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "card-body"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, song.description), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("ul", {
         className: "list-group mt-3"
@@ -66412,7 +66412,7 @@ function (_Component) {
           className: "list-group-item list-group-item-action d-flex justify-content-between align-items-center",
           to: "/".concat(song.id),
           key: song.id
-        }, song.name, song.artist);
+        }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, song.name, " - ", song.artist));
       })))))));
     }
   }]);

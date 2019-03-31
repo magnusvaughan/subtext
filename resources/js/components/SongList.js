@@ -37,8 +37,7 @@ class SongList extends Component {
                       to={`/${song.id}`}
                       key={song.id}
                     >
-                      {song.name}
-                      {song.artist}
+                      <p>{song.name} - {song.artist}</p>
 
                     </Link>
                   ))}

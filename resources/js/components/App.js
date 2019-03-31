@@ -18,7 +18,7 @@ class App extends Component {
         <div>
             <Header />
             <Switch>
-                <Route exact path='/' component={MainMenu} />
+                <Route exact path='/' component={SongList} />
                 <Route exact path='/stories' component={StoryList} />
                 <Route exact path='/lyrics' component={LyricsList} />
                 <Route exact path='/songs' component={SongList} />

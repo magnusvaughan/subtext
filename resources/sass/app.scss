@@ -3,6 +3,7 @@
 @import url('https://fonts.googleapis.com/css?family=Kalam');
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 @import url('https://fonts.googleapis.com/css?family=Inconsolata');
+@import url('https://fonts.googleapis.com/css?family=Special+Elite');
 
 // Variables
 @import 'variables';
@@ -11,32 +12,38 @@
 @import '~bootstrap/scss/bootstrap';
 
 .navbar-laravel {
-  background-color: #fff;
+  background-color: #000000;
+  color: white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
-#example {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.navbar-light .navbar-brand {
+  color: white;
+}
+
+.card {
+  border: none;
 }
 
 .card-header {
   font-size: 2rem;
   text-align: center;
+  font-family: 'Special Elite', cursive;
+  background: black;
+  color: white;
 }
 
 .card-body {
-  font-family: 'Arvo', serif;
   text-align: center;
   font-size: 1.25rem;
+  background-color: black;
 }
 
 img {
-  height:300px; 
-  width:500px;
+  height:auto;
+  min-height: 400px;
+  max-height: 600px; 
+  width:100%;
 }
 
 // Turns
@@ -45,23 +52,38 @@ img {
   animation: slideIn 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
 }
 
+.list-group-item-action {
+  color: white;
+  background-color: rgba($color: #000000, $alpha: 0.9);
+}
+
 .list-group-item {
   position: relative;
   justify-content: center;
+  padding: 0;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125); 
   img {
-
+    filter: grayscale(100%);
   }
   span {
     position: absolute;  
     left: 50%;                        /* horizontal alignment */
-    bottom: 0%;                         /* vertical alignment */
+    bottom: -10%;                         /* vertical alignment */
     transform: translate(-50%, -50%);
     color: white;
-    background-color: rgba($color: #000000, $alpha: 0.6);
-    padding: 0.25rem 0.5rem;
+    background-color: rgba($color: #000000, $alpha: 0.9);
+    padding: 2em 0.5rem;
     text-shadow: 1px 1px 1px #000;
     font-family: 'Inconsolata', monospace;
+    z-index: 2;
+    width: 100%;
   }
+}
+
+.btn-primary {
+  background-color: white;
+  color: black;
 }
 
 @keyframes slideIn {

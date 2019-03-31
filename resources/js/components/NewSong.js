@@ -36,7 +36,7 @@ import axios from 'axios'
         axios.post('/api/songs', song)
           .then(response => {
             // redirect to the homepage
-            history.push('/')
+            history.push(`/${response.data.id}`)
           })
           .catch(error => {
             this.setState({

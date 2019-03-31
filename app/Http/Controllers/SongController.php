@@ -24,16 +24,12 @@ class SongController extends Controller
           'lyrics' => 'required',
         ]);
 
-        $song_data = [];
 
         $song = song::create([
           'name' => $validatedData['name'],
           'artist' => $validatedData['artist'],
           'lyrics' => $validatedData['lyrics'],
         ]);
-
-        $song_data['song'] = $song;
-        $song_data['lyrics'] = [];
 
         $lyrics_array = preg_split('/\r\n|\r|\n/', $validatedData['lyrics']);
 
@@ -43,7 +39,7 @@ class SongController extends Controller
 
           $search_term = $lyric;
   
-          $url = "http://api.giphy.com/v1/gifs/search?q=" . $search_term . "&api_key=" . $giphy_key . "&limit=5";
+          $url = "http://api.giphy.com/v1/gifs/search?q=" . $search_term . "&api_key=" . $giphy_key . "&limit=1";
     
           $client = new Client();
           $body = $client->get($url)->getBody();
@@ -52,17 +48,13 @@ class SongController extends Controller
 
           $new_lyric = Lyric::create([
             'lyric_text' => $lyric,
-            'song_id' => '12',
+            'song_id' => $song->id,
             'image_url' => $image_url
           ]);
 
-            $song_data['lyrics'][] = $new_lyric;
-
         }
 
-        $song_data_formatted = json_decode(json_encode($song_data));
-
-        return json("Song Created");
+        return response()->json('Song created!');
       }
 
       public function show($id)
