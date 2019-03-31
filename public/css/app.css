@@ -10684,10 +10684,9 @@ a.text-dark:focus {
 }
 
 img {
-  height: auto;
-  min-height: 400px;
-  max-height: 600px;
+  max-width: 100%;
   width: 100%;
+  height: auto;
 }
 
 .turn {
@@ -10705,61 +10704,70 @@ img {
   justify-content: center;
   padding: 0;
   border: none;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+  border-top: 2px solid #d2d2d2;
+  border-right: 1px solid #d2d2d2;
+  border-bottom: 2px solid #d2d2d2;
+  border-left: 1px solid #d2d2d2;
+  margin-bottom: 2rem;
 }
 
 .list-group-item img {
   -webkit-filter: grayscale(100%);
           filter: grayscale(100%);
+  transition: all 0.8s;
+}
+
+.list-group-item img:hover {
+  -webkit-filter: grayscale(0%);
+          filter: grayscale(0%);
 }
 
 .list-group-item span {
   position: absolute;
-  left: 50%;
-  /* horizontal alignment */
-  bottom: -10%;
-  /* vertical alignment */
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  left: 0;
+  bottom: 0;
   color: white;
-  background-color: rgba(0, 0, 0, 0.9);
-  padding: 2em 0.5rem;
+  background-color: rgba(0, 0, 0, 0.95);
+  padding: 1em 0.5rem;
   text-shadow: 1px 1px 1px #000;
   font-family: "Inconsolata", monospace;
+  font-size: 2rem;
   z-index: 2;
   width: 100%;
+}
+
+.song-list {
+  text-align: center;
+}
+
+.song-list-item {
+  border: none;
+  background-color: black;
+  text-align: center;
+  font-size: 1.75rem;
+  transition: all 0.5s;
+}
+
+.song-list-item:hover {
+  background-color: black;
+}
+
+.song-list-item:hover {
+  color: #999999;
+}
+
+label {
+  color: white;
+}
+
+.dots {
+  color: white;
+  font-size: 3rem;
+  padding: 1rem;
 }
 
 .btn-primary {
   background-color: white;
   color: black;
-}
-
-@-webkit-keyframes slideIn {
-  from {
-    opacity: 0;
-    -webkit-transform: translate3d(-20rem, 0, 500rem);
-            transform: translate3d(-20rem, 0, 500rem);
-  }
-
-  to {
-    opacity: 1;
-    -webkit-transform: translate3d(0, 0, 0);
-            transform: translate3d(0, 0, 0);
-  }
-}
-
-@keyframes slideIn {
-  from {
-    opacity: 0;
-    -webkit-transform: translate3d(-20rem, 0, 500rem);
-            transform: translate3d(-20rem, 0, 500rem);
-  }
-
-  to {
-    opacity: 1;
-    -webkit-transform: translate3d(0, 0, 0);
-            transform: translate3d(0, 0, 0);
-  }
 }
 

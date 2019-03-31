@@ -59,6 +59,7 @@ class SingleSong extends Component {
                       <img src={lyric.image_url} alt=""/>
 
                     </li>
+
                   ))}
                 </ul>
 

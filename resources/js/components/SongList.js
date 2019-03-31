@@ -25,20 +25,19 @@ class SongList extends Component {
         <div className='row justify-content-center'>
           <div className='col-md-8'>
             <div className='card'>
-              <div className='card-header'>All songs</div>
+              <div className='card-header'>Radiohead - Okay Computer</div>
+              <div className='card-header'>In GIFs</div>
               <div className='card-body'>
                 <Link className='btn btn-primary btn-sm mb-3' to='/create/song'>
                   Create new song
                 </Link>
-                <ul className='list-group list-group-flush'>
+                <ul className='list-group list-group-flush song-list'>
                   {songs.map(song => (
                     <Link
-                      className='list-group-item list-group-item-action d-flex justify-content-between align-items-center'
+                      className='list-group-item list-group-item-action d-flex justify-content-between align-items-center song-list-item'
                       to={`/${song.id}`}
                       key={song.id}
-                    >
-                      <p>{song.name} - {song.artist}</p>
-
+                    >{song.name}
                     </Link>
                   ))}
                 </ul>

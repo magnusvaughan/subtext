@@ -65515,7 +65515,7 @@ var Header = function Header() {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     className: "navbar-brand",
     to: "/"
-  }, "Subtext")));
+  }, "Home")));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Header);
@@ -66400,19 +66400,21 @@ function (_Component) {
         className: "card"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "card-header"
-      }, "All songs"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+      }, "Radiohead - Okay Computer"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "card-header"
+      }, "In GIFs"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "card-body"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
         className: "btn btn-primary btn-sm mb-3",
         to: "/create/song"
       }, "Create new song"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("ul", {
-        className: "list-group list-group-flush"
+        className: "list-group list-group-flush song-list"
       }, songs.map(function (song) {
         return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
-          className: "list-group-item list-group-item-action d-flex justify-content-between align-items-center",
+          className: "list-group-item list-group-item-action d-flex justify-content-between align-items-center song-list-item",
           to: "/".concat(song.id),
           key: song.id
-        }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, song.name, " - ", song.artist));
+        }, song.name);
       })))))));
     }
   }]);
