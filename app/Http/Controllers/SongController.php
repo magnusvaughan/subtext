@@ -54,7 +54,7 @@ class SongController extends Controller
 
         }
 
-        return response()->json('Song created!');
+        return $song->toJson();
       }
 
       public function show($id)

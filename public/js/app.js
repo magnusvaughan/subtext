@@ -65789,6 +65789,7 @@ function (_Component) {
       };
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/songs', song).then(function (response) {
         // redirect to the homepage
+        console.log('New Song ID', response.data);
         history.push("/".concat(response.data.id));
       }).catch(function (error) {
         _this2.setState({
