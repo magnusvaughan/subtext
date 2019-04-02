@@ -10665,6 +10665,10 @@ a.text-dark:focus {
   color: white;
 }
 
+.navbar-light .navbar-brand:hover {
+  color: #999999;
+}
+
 .card {
   border: none;
 }
@@ -10675,6 +10679,12 @@ a.text-dark:focus {
   font-family: "Special Elite", cursive;
   background: black;
   color: white;
+  padding-bottom: 0;
+}
+
+.card-header:nth-child(2) {
+  padding-top: 0;
+  padding-bottom: 2rem;
 }
 
 .card-body {
@@ -10782,6 +10792,11 @@ label {
   .list-group-item span {
     padding: 0.5em 0.5rem;
     font-size: 0.85rem;
+  }
+
+  .list-group-item img {
+    -webkit-filter: none;
+            filter: none;
   }
 }
 
