@@ -66415,7 +66415,7 @@ function (_Component) {
         className: "card"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "card-header"
-      }, "Radiohead - Okay Computer"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+      }, "Radiohead - OK Computer"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "card-header"
       }, "In GIFs"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "card-body"

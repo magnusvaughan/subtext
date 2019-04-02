@@ -32,7 +32,7 @@ class SongList extends Component {
         <div className='row justify-content-center'>
           <div className='col-md-8'>
             <div className='card'>
-              <div className='card-header'>Radiohead - Okay Computer</div>
+              <div className='card-header'>Radiohead - OK Computer</div>
               <div className='card-header'>In GIFs</div>
               <div className='card-body'>
                 {/* <Link className='btn btn-primary btn-sm mb-3' to='/create/song'>
