@@ -10670,7 +10670,7 @@ a.text-dark:focus {
 }
 
 .card-header {
-  font-size: 2rem;
+  font-size: 1.75rem;
   text-align: center;
   font-family: "Special Elite", cursive;
   background: black;
@@ -10746,7 +10746,8 @@ img {
   border: none;
   background-color: black;
   text-align: center;
-  font-size: 1.75rem;
+  font-size: 1.15rem;
+  line-height: 0.5rem;
   transition: all 0.5s;
 }
 
@@ -10771,5 +10772,16 @@ label {
 .btn-primary {
   background-color: white;
   color: black;
+}
+
+@media only screen and (max-width: 480px) {
+  .card-header {
+    font-size: 1.5rem;
+  }
+
+  .list-group-item span {
+    padding: 0.5em 0.5rem;
+    font-size: 0.85rem;
+  }
 }
 

@@ -23,13 +23,10 @@ class SongList extends Component {
     songs = songs.sort(function(a, b) {
       let numberA = parseInt(a.name.split('.')[0]);
       let numberB = parseInt(b.name.split('.')[0]);
-      console.log('Number A', numberA);
-      console.log('Number B', numberB);
       if(numberA < numberB) { return -1; }
       if(numberA > numberB) { return 1; }
       return 0;
     });
-    console.log(songs);
     return (
       <div className='container py-4'>
         <div className='row justify-content-center'>

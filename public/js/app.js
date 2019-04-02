@@ -66394,8 +66394,6 @@ function (_Component) {
       songs = songs.sort(function (a, b) {
         var numberA = parseInt(a.name.split('.')[0]);
         var numberB = parseInt(b.name.split('.')[0]);
-        console.log('Number A', numberA);
-        console.log('Number B', numberB);
 
         if (numberA < numberB) {
           return -1;
@@ -66407,7 +66405,6 @@ function (_Component) {
 
         return 0;
       });
-      console.log(songs);
       return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "container py-4"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
