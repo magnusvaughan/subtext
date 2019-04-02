@@ -10,8 +10,13 @@ import SingleSong from './SingleSong'
 import MainMenu from './MainMenu'
 import LyricsList from './LyricsList'
 import SongList from './SongList'
+import ReactGA from 'react-ga';
+
+ReactGA.initialize('UA-137553389-1');
+ReactGA.pageview('/home');
 
 class App extends Component {
+
     render () {
     return (
         <BrowserRouter>
