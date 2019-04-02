@@ -10738,9 +10738,11 @@ img {
 
 .song-list {
   text-align: center;
+  align-items: center;
 }
 
 .song-list-item {
+  width: auto;
   border: none;
   background-color: black;
   text-align: center;

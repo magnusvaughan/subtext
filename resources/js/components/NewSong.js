@@ -66,7 +66,7 @@ import axios from 'axios'
             <div className='row justify-content-center'>
               <div className='col-md-6'>
                 <div className='card'>
-                  <div className='card-header'>Gif up some lyrics</div>
+                  <div className='card-header'>Reveal the subtext</div>
                   <div className='card-body'>
                     <form onSubmit={this.handleCreateNewsong}>
                       <div className='form-group'>

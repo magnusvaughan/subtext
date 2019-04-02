@@ -19,7 +19,17 @@ class SongList extends Component {
   }
 
   render () {
-    const { songs } = this.state
+    let { songs } = this.state;
+    songs = songs.sort(function(a, b) {
+      let numberA = parseInt(a.name.split('.')[0]);
+      let numberB = parseInt(b.name.split('.')[0]);
+      console.log('Number A', numberA);
+      console.log('Number B', numberB);
+      if(numberA < numberB) { return -1; }
+      if(numberA > numberB) { return 1; }
+      return 0;
+    });
+    console.log(songs);
     return (
       <div className='container py-4'>
         <div className='row justify-content-center'>
@@ -28,9 +38,9 @@ class SongList extends Component {
               <div className='card-header'>Radiohead - Okay Computer</div>
               <div className='card-header'>In GIFs</div>
               <div className='card-body'>
-                <Link className='btn btn-primary btn-sm mb-3' to='/create/song'>
+                {/* <Link className='btn btn-primary btn-sm mb-3' to='/create/song'>
                   Create new song
-                </Link>
+                </Link> */}
                 <ul className='list-group list-group-flush song-list'>
                   {songs.map(song => (
                     <Link

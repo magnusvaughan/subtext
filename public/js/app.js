@@ -65824,7 +65824,7 @@ function (_Component) {
         className: "card"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "card-header"
-      }, "Gif up some lyrics"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+      }, "Reveal the subtext"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "card-body"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("form", {
         onSubmit: this.handleCreateNewsong
@@ -66391,6 +66391,23 @@ function (_Component) {
     key: "render",
     value: function render() {
       var songs = this.state.songs;
+      songs = songs.sort(function (a, b) {
+        var numberA = parseInt(a.name.split('.')[0]);
+        var numberB = parseInt(b.name.split('.')[0]);
+        console.log('Number A', numberA);
+        console.log('Number B', numberB);
+
+        if (numberA < numberB) {
+          return -1;
+        }
+
+        if (numberA > numberB) {
+          return 1;
+        }
+
+        return 0;
+      });
+      console.log(songs);
       return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "container py-4"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
@@ -66405,10 +66422,7 @@ function (_Component) {
         className: "card-header"
       }, "In GIFs"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "card-body"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
-        className: "btn btn-primary btn-sm mb-3",
-        to: "/create/song"
-      }, "Create new song"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("ul", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("ul", {
         className: "list-group list-group-flush song-list"
       }, songs.map(function (song) {
         return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
