@@ -16,6 +16,25 @@ class SongController extends Controller
         return $song->toJson();
       }
 
+      public function store_from_api($album_name) {
+
+        // GET ALBUM TRACKLIST FROM **** API
+
+        //Call STANDS 4 API for SONG
+
+        //Stands4 API Data
+        $stands4_uid = env("STANDS4_UID", "");
+        $stands4_token_id = env("STANDS4_TOKEN_ID", "");
+
+        $url = "https://www.abbreviations.com/services/v2/lyrics.php?uid=" . 
+        $stands4_uid . 
+        "&tokenid=" . 
+        $stands4_token_id . 
+        "&term=" . 
+        $album_name . 
+        "&format=json";
+      }
+
       public function store(Request $request)
       {
         $validatedData = $request->validate([
