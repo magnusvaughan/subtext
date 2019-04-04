@@ -7,13 +7,13 @@ import axios from 'axios'
         this.state = {
           name: '',
           lyrics: '',
-          artist: '',
+          song: '',
           errors: [],
           results: []
         }
         this.handleFieldChange = this.handleFieldChange.bind(this)
         this.handleCreateNewsong = this.handleCreateNewsong.bind(this)
-        this.handleSearchArtist = this.handleSearchArtist.bind(this)
+        this.handleSearchSong = this.handleSearchSong.bind(this)
         this.hasErrorFor = this.hasErrorFor.bind(this)
         this.renderErrorFor = this.renderErrorFor.bind(this)
       }
@@ -47,21 +47,30 @@ import axios from 'axios'
           })
       }
 
-      handleSearchArtist(event) {
+      handleSearchSong(event) {
 
         const { history } = this.props
 
         event.preventDefault()
-        const artist = {
-          artist: this.state.artist
+        const song = {
+          song: this.state.song
         }
 
-        axios.post('/api/artist', artist)
+        console.log(song);
+
+        axios.post('/api/songs/search', song)
           .then(response => {
             console.log(response);
-            this.setState({
-              results: response.data
-            })
+            if(response.data = {}) {
+              this.setState({
+                results: [{href:"#", song_name: "No results found - please search again"}]
+              })
+            }
+            else {
+              this.setState({
+                results: response.data
+              })
+            }
           })
           .catch(error => {
             this.setState({
@@ -94,19 +103,19 @@ import axios from 'axios'
                   <div className='card-header'>Reveal the subtext</div>
                   <div className='card-body'>
 
-                    <form onSubmit={this.handleSearchArtist}>
+                    <form onSubmit={this.handleSearchSong}>
 
                       <div className="form-group">
-                      <label htmlFor='artist'>Search for an artist</label>
+                      <label htmlFor='song'>Search for a song</label>
                         <input
-                          id='artist'
+                          id='song'
                           type='text'
-                          className={`form-control ${this.hasErrorFor('artist') ? 'is-invalid' : ''}`}
-                          name='artist'
-                          value={this.state.artist}
+                          className={`form-control ${this.hasErrorFor('song') ? 'is-invalid' : ''}`}
+                          name='song'
+                          value={this.state.song}
                           onChange={this.handleFieldChange}
                         />
-                        {this.renderErrorFor('artist')}
+                        {this.renderErrorFor('song')}
                       </div>
                       <button className='btn btn-primary'>Search</button>
                     </form>
@@ -120,7 +129,7 @@ import axios from 'axios'
                           className='list-group-item d-flex align-items-center turn'
                           key={result.key}
                         > 
-                        <a href={result.href}>{result.text}</a>
+                        <a href={result.href}>{result.song_name} by {result.artist_name}</a>
                         </li>
                       ))}
                     </ul>
