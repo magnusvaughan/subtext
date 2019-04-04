@@ -66482,6 +66482,7 @@ function (_Component) {
         path: "/create/story",
         component: _NewStory__WEBPACK_IMPORTED_MODULE_4__["default"]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+        exact: true,
         path: "/create/song",
         component: _NewSong__WEBPACK_IMPORTED_MODULE_5__["default"]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
@@ -66768,10 +66769,12 @@ function (_Component) {
       name: '',
       lyrics: '',
       artist: '',
-      errors: []
+      errors: [],
+      results: []
     };
     _this.handleFieldChange = _this.handleFieldChange.bind(_assertThisInitialized(_this));
     _this.handleCreateNewsong = _this.handleCreateNewsong.bind(_assertThisInitialized(_this));
+    _this.handleSearchArtist = _this.handleSearchArtist.bind(_assertThisInitialized(_this));
     _this.hasErrorFor = _this.hasErrorFor.bind(_assertThisInitialized(_this));
     _this.renderErrorFor = _this.renderErrorFor.bind(_assertThisInitialized(_this));
     return _this;
@@ -66795,11 +66798,32 @@ function (_Component) {
         lyrics: this.state.lyrics
       };
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/songs', song).then(function (response) {
-        // redirect to the homepage
-        console.log('New Song ID', response.data);
+        // redirect to the homepage 
         history.push("/".concat(response.data.id));
       }).catch(function (error) {
         _this2.setState({
+          errors: error.response.data.errors
+        });
+      });
+    }
+  }, {
+    key: "handleSearchArtist",
+    value: function handleSearchArtist(event) {
+      var _this3 = this;
+
+      var history = this.props.history;
+      event.preventDefault();
+      var artist = {
+        artist: this.state.artist
+      };
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/artist', artist).then(function (response) {
+        console.log(response);
+
+        _this3.setState({
+          results: response.data
+        });
+      }).catch(function (error) {
+        _this3.setState({
           errors: error.response.data.errors
         });
       });
@@ -66821,6 +66845,7 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
+      var results = this.state.results;
       return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "container py-4"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
@@ -66834,43 +66859,34 @@ function (_Component) {
       }, "Reveal the subtext"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "card-body"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("form", {
-        onSubmit: this.handleCreateNewsong
+        onSubmit: this.handleSearchArtist
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "form-group"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
-        htmlFor: "name"
-      }, "Song Name"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
-        id: "name",
-        type: "text",
-        className: "form-control ".concat(this.hasErrorFor('name') ? 'is-invalid' : ''),
-        name: "name",
-        value: this.state.name,
-        onChange: this.handleFieldChange
-      }), this.renderErrorFor('name')), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "form-group"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
         htmlFor: "artist"
-      }, "Artist"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
+      }, "Search for an artist"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
         id: "artist",
         type: "text",
         className: "form-control ".concat(this.hasErrorFor('artist') ? 'is-invalid' : ''),
         name: "artist",
         value: this.state.artist,
         onChange: this.handleFieldChange
-      }), this.renderErrorFor('artist')), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "form-group"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
-        htmlFor: "lyrics"
-      }, "Song lyrics"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("textarea", {
-        id: "lyrics",
-        className: "form-control ".concat(this.hasErrorFor('lyrics') ? 'is-invalid' : ''),
-        name: "lyrics",
-        rows: "10",
-        value: this.state.lyrics,
-        onChange: this.handleFieldChange
-      }), this.renderErrorFor('lyrics')), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+      }), this.renderErrorFor('artist')), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         className: "btn btn-primary"
-      }, "Create")))))));
+      }, "Search")))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "card-header"
+      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "card-body"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("ul", {
+        className: "list-group mt-3"
+      }, results.map(function (result) {
+        return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
+          className: "list-group-item d-flex align-items-center turn",
+          key: result.key
+        }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
+          href: result.href
+        }, result.text));
+      }))))));
     }
   }]);
 
@@ -67426,7 +67442,10 @@ function (_Component) {
         className: "card-header"
       }, "In GIFs"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "card-body"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("ul", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+        className: "btn btn-primary btn-sm mb-3",
+        to: "/create/song"
+      }, "Create new song"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("ul", {
         className: "list-group list-group-flush song-list"
       }, songs.map(function (song) {
         return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {

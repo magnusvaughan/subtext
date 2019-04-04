@@ -8,10 +8,12 @@ import axios from 'axios'
           name: '',
           lyrics: '',
           artist: '',
-          errors: []
+          errors: [],
+          results: []
         }
         this.handleFieldChange = this.handleFieldChange.bind(this)
         this.handleCreateNewsong = this.handleCreateNewsong.bind(this)
+        this.handleSearchArtist = this.handleSearchArtist.bind(this)
         this.hasErrorFor = this.hasErrorFor.bind(this)
         this.renderErrorFor = this.renderErrorFor.bind(this)
       }
@@ -35,9 +37,31 @@ import axios from 'axios'
 
         axios.post('/api/songs', song)
           .then(response => {
-            // redirect to the homepage
-            console.log('New Song ID', response.data);
+            // redirect to the homepage 
             history.push(`/${response.data.id}`)
+          })
+          .catch(error => {
+            this.setState({
+              errors: error.response.data.errors
+            })
+          })
+      }
+
+      handleSearchArtist(event) {
+
+        const { history } = this.props
+
+        event.preventDefault()
+        const artist = {
+          artist: this.state.artist
+        }
+
+        axios.post('/api/artist', artist)
+          .then(response => {
+            console.log(response);
+            this.setState({
+              results: response.data
+            })
           })
           .catch(error => {
             this.setState({
@@ -61,6 +85,7 @@ import axios from 'axios'
       }
 
       render () {
+        let { results } = this.state;
         return (
           <div className='container py-4'>
             <div className='row justify-content-center'>
@@ -68,22 +93,11 @@ import axios from 'axios'
                 <div className='card'>
                   <div className='card-header'>Reveal the subtext</div>
                   <div className='card-body'>
-                    <form onSubmit={this.handleCreateNewsong}>
-                      <div className='form-group'>
-                        <label htmlFor='name'>Song Name</label>
-                        <input
-                          id='name'
-                          type='text'
-                          className={`form-control ${this.hasErrorFor('name') ? 'is-invalid' : ''}`}
-                          name='name'
-                          value={this.state.name}
-                          onChange={this.handleFieldChange}
-                        />
-                        {this.renderErrorFor('name')}
 
-                      </div>
+                    <form onSubmit={this.handleSearchArtist}>
+
                       <div className="form-group">
-                      <label htmlFor='artist'>Artist</label>
+                      <label htmlFor='artist'>Search for an artist</label>
                         <input
                           id='artist'
                           type='text'
@@ -94,21 +108,22 @@ import axios from 'axios'
                         />
                         {this.renderErrorFor('artist')}
                       </div>
-                      <div className='form-group'>
-                        <label htmlFor='lyrics'>Song lyrics</label>
-                        <textarea
-                          id='lyrics'
-                          className={`form-control ${this.hasErrorFor('lyrics') ? 'is-invalid' : ''}`}
-                          name='lyrics'
-                          rows='10'
-                          value={this.state.lyrics}
-                          onChange={this.handleFieldChange}
-                        />
-                        {this.renderErrorFor('lyrics')}
-                      </div>
-                      <button className='btn btn-primary'>Create</button>
+                      <button className='btn btn-primary'>Search</button>
                     </form>
                   </div>
+                </div>
+                <div className='card-header'></div>
+                  <div className='card-body'>
+                    <ul className='list-group mt-3'>
+                      {results.map(result => (
+                        <li
+                          className='list-group-item d-flex align-items-center turn'
+                          key={result.key}
+                        > 
+                        <a href={result.href}>{result.text}</a>
+                        </li>
+                      ))}
+                    </ul>
                 </div>
               </div>
             </div>

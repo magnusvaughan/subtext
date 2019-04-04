@@ -35,9 +35,9 @@ class SongList extends Component {
               <div className='card-header'>Radiohead - OK Computer</div>
               <div className='card-header'>In GIFs</div>
               <div className='card-body'>
-                {/* <Link className='btn btn-primary btn-sm mb-3' to='/create/song'>
+                <Link className='btn btn-primary btn-sm mb-3' to='/create/song'>
                   Create new song
-                </Link> */}
+                </Link>
                 <ul className='list-group list-group-flush song-list'>
                   {songs.map(song => (
                     <Link

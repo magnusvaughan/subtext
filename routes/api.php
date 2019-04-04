@@ -24,3 +24,5 @@ Route::get('songs', 'SongController@index');
 Route::post('songs', 'SongController@store');
 Route::get('songs/{id}', 'SongController@show');
 Route::post('lyrics', 'LyricController@store');
+
+Route::post('artist', 'SongController@search');

@@ -28,7 +28,7 @@ class App extends Component {
                 <Route exact path='/lyrics' component={LyricsList} />
                 <Route exact path='/songs' component={SongList} />
                 <Route path='/create/story' component={NewStory} />
-                <Route path='/create/song' component={NewSong} />
+                <Route exact path='/create/song' component={NewSong} />
                 {/* <Route path='/story/:id' component={SingleStory} /> */}
                 <Route path='/:id' component={SingleSong} />
             </Switch>
