@@ -15,12 +15,9 @@ use Illuminate\Http\Request;
 
 // routes/api.php
 
-Route::get('stories', 'StoryController@index');
-Route::post('stories', 'StoryController@store');
-Route::get('stories/{id}', 'StoryController@show');
-Route::post('turns', 'TurnController@store');
-
 Route::get('songs', 'SongController@index');
 Route::post('songs', 'SongController@store');
 Route::get('songs/{id}', 'SongController@show');
 Route::post('lyrics', 'LyricController@store');
+
+Route::get('albums', 'AlbumController@index');

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Album;
 use Illuminate\Http\Request;
 
 class AlbumController extends Controller
@@ -13,7 +14,8 @@ class AlbumController extends Controller
      */
     public function index()
     {
-        //
+        $album = Album::all();
+        return $album->toJson();
     }
 
     /**
