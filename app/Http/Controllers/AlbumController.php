@@ -47,7 +47,8 @@ class AlbumController extends Controller
      */
     public function show($id)
     {
-        //
+        $album = Album::with(['songs'])->find($id);
+        return $album->toJson();
     }
 
     /**

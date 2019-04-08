@@ -33,7 +33,7 @@ class AlbumList extends Component {
                   {albums.map(album => (
                     <Link
                       className='list-group-item list-group-item-action d-flex justify-content-between align-items-center song-list-item'
-                      to={`/${album.id}`}
+                      to={`/albums/${album.id}`}
                       key={album.id}
                     >{album.album_name}
                     </Link>

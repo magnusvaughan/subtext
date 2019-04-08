@@ -66479,7 +66479,7 @@ function (_Component) {
       }, albums.map(function (album) {
         return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
           className: "list-group-item list-group-item-action d-flex justify-content-between align-items-center song-list-item",
-          to: "/".concat(album.id),
+          to: "/albums/".concat(album.id),
           key: album.id
         }, album.album_name);
       })))))));
@@ -66564,6 +66564,9 @@ function (_Component) {
         path: "/",
         component: _AlbumList__WEBPACK_IMPORTED_MODULE_8__["default"]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+        path: "/albums/:id",
+        component: _SongList__WEBPACK_IMPORTED_MODULE_7__["default"]
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
         exact: true,
         path: "/lyrics",
         component: _LyricsList__WEBPACK_IMPORTED_MODULE_6__["default"]
@@ -66575,8 +66578,8 @@ function (_Component) {
         path: "/create/song",
         component: _NewSong__WEBPACK_IMPORTED_MODULE_4__["default"]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
-        path: "/:id",
-        component: _SingleSong__WEBPACK_IMPORTED_MODULE_5__["default"]
+        path: "/songs/:id",
+        component: _SongList__WEBPACK_IMPORTED_MODULE_7__["default"]
       }))));
     }
   }]);
@@ -67064,9 +67067,12 @@ function (_Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/songs').then(function (response) {
+      var id = this.props.match.params.id;
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/albums/".concat(id)).then(function (response) {
+        console.log(response);
+
         _this2.setState({
-          songs: response.data
+          songs: response.data.songs
         });
       });
     }
@@ -67074,20 +67080,6 @@ function (_Component) {
     key: "render",
     value: function render() {
       var songs = this.state.songs;
-      songs = songs.sort(function (a, b) {
-        var numberA = parseInt(a.name.split('.')[0]);
-        var numberB = parseInt(b.name.split('.')[0]);
-
-        if (numberA < numberB) {
-          return -1;
-        }
-
-        if (numberA > numberB) {
-          return 1;
-        }
-
-        return 0;
-      });
       return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "container py-4"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
@@ -67102,7 +67094,10 @@ function (_Component) {
         className: "card-header"
       }, "In GIFs"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "card-body"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("ul", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+        className: "btn btn-primary btn-sm mb-3",
+        to: "/create/song"
+      }, "Create new song"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("ul", {
         className: "list-group list-group-flush song-list"
       }, songs.map(function (song) {
         return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {

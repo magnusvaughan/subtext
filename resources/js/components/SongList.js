@@ -11,22 +11,19 @@ class SongList extends Component {
   }
 
   componentDidMount () {
-    axios.get('/api/songs').then(response => {
+
+    const { id } = this.props.match.params
+
+    axios.get(`/api/albums/${id}`).then(response => {
+      console.log(response);
       this.setState({
-        songs: response.data
+        songs: response.data.songs
       })
     })
   }
 
   render () {
     let { songs } = this.state;
-    songs = songs.sort(function(a, b) {
-      let numberA = parseInt(a.name.split('.')[0]);
-      let numberB = parseInt(b.name.split('.')[0]);
-      if(numberA < numberB) { return -1; }
-      if(numberA > numberB) { return 1; }
-      return 0;
-    });
     return (
       <div className='container py-4'>
         <div className='row justify-content-center'>
@@ -35,9 +32,9 @@ class SongList extends Component {
               <div className='card-header'>Radiohead - OK Computer</div>
               <div className='card-header'>In GIFs</div>
               <div className='card-body'>
-                {/* <Link className='btn btn-primary btn-sm mb-3' to='/create/song'>
+                <Link className='btn btn-primary btn-sm mb-3' to='/create/song'>
                   Create new song
-                </Link> */}
+                </Link>
                 <ul className='list-group list-group-flush song-list'>
                   {songs.map(song => (
                     <Link
