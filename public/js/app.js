@@ -66776,8 +66776,11 @@ function (_Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(NewSong).call(this, props));
     _this.state = {
       name: '',
+      track_number: '',
       lyrics: '',
       artist: '',
+      album: '',
+      year: '',
       errors: []
     };
     _this.handleFieldChange = _this.handleFieldChange.bind(_assertThisInitialized(_this));
@@ -66801,8 +66804,11 @@ function (_Component) {
       var history = this.props.history;
       var song = {
         name: this.state.name,
+        track_number: this.state.track_number,
         artist: this.state.artist,
-        lyrics: this.state.lyrics
+        lyrics: this.state.lyrics,
+        album: this.state.album,
+        year: this.state.year
       };
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/songs', song).then(function (response) {
         // redirect to the homepage
@@ -66859,6 +66865,17 @@ function (_Component) {
       }), this.renderErrorFor('name')), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "form-group"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
+        htmlFor: "name"
+      }, "Track Number"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
+        id: "track_number",
+        type: "integer",
+        className: "form-control ".concat(this.hasErrorFor('track_number') ? 'is-invalid' : ''),
+        name: "track_number",
+        value: this.state.track_number,
+        onChange: this.handleFieldChange
+      }), this.renderErrorFor('track_number')), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "form-group"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
         htmlFor: "artist"
       }, "Artist"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
         id: "artist",
@@ -66868,6 +66885,28 @@ function (_Component) {
         value: this.state.artist,
         onChange: this.handleFieldChange
       }), this.renderErrorFor('artist')), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "form-group"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
+        htmlFor: "artist"
+      }, "Album"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
+        id: "album",
+        type: "text",
+        className: "form-control ".concat(this.hasErrorFor('album') ? 'is-invalid' : ''),
+        name: "album",
+        value: this.state.album,
+        onChange: this.handleFieldChange
+      }), this.renderErrorFor('album')), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "form-group"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
+        htmlFor: "year"
+      }, "Year"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
+        id: "year",
+        type: "integer",
+        className: "form-control ".concat(this.hasErrorFor('year') ? 'is-invalid' : ''),
+        name: "year",
+        value: this.state.year,
+        onChange: this.handleFieldChange
+      }), this.renderErrorFor('album')), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "form-group"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
         htmlFor: "lyrics"

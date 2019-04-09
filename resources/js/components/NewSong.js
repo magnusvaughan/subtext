@@ -6,8 +6,11 @@ import axios from 'axios'
         super(props)
         this.state = {
           name: '',
+          track_number: '',
           lyrics: '',
           artist: '',
+          album: '',
+          year: '',
           errors: []
         }
         this.handleFieldChange = this.handleFieldChange.bind(this)
@@ -29,8 +32,11 @@ import axios from 'axios'
 
         const song = {
           name: this.state.name,
+          track_number: this.state.track_number,
           artist: this.state.artist,
-          lyrics: this.state.lyrics
+          lyrics: this.state.lyrics,
+          album: this.state.album,
+          year: this.state.year
         }
 
         axios.post('/api/songs', song)
@@ -80,7 +86,18 @@ import axios from 'axios'
                           onChange={this.handleFieldChange}
                         />
                         {this.renderErrorFor('name')}
-
+                      </div>
+                      <div className='form-group'>
+                        <label htmlFor='name'>Track Number</label>
+                        <input
+                          id='track_number'
+                          type='integer'
+                          className={`form-control ${this.hasErrorFor('track_number') ? 'is-invalid' : ''}`}
+                          name='track_number'
+                          value={this.state.track_number}
+                          onChange={this.handleFieldChange}
+                        />
+                        {this.renderErrorFor('track_number')}
                       </div>
                       <div className="form-group">
                       <label htmlFor='artist'>Artist</label>
@@ -93,6 +110,30 @@ import axios from 'axios'
                           onChange={this.handleFieldChange}
                         />
                         {this.renderErrorFor('artist')}
+                      </div>
+                      <div className="form-group">
+                      <label htmlFor='artist'>Album</label>
+                        <input
+                          id='album'
+                          type='text'
+                          className={`form-control ${this.hasErrorFor('album') ? 'is-invalid' : ''}`}
+                          name='album'
+                          value={this.state.album}
+                          onChange={this.handleFieldChange}
+                        />
+                        {this.renderErrorFor('album')}
+                      </div>
+                      <div className="form-group">
+                      <label htmlFor='year'>Year</label>
+                        <input
+                          id='year'
+                          type='integer'
+                          className={`form-control ${this.hasErrorFor('year') ? 'is-invalid' : ''}`}
+                          name='year'
+                          value={this.state.year}
+                          onChange={this.handleFieldChange}
+                        />
+                        {this.renderErrorFor('album')}
                       </div>
                       <div className='form-group'>
                         <label htmlFor='lyrics'>Song lyrics</label>

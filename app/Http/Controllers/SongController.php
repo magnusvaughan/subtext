@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Album;
 use App\Song;
 use App\Lyric;
 use GuzzleHttp\Client;
@@ -20,13 +21,26 @@ class SongController extends Controller
       {
         $validatedData = $request->validate([
           'name' => 'required',
+          'track_number' => 'required',
           'artist' => 'required',
+          'album' => 'required',
+          'year' => 'required',
           'lyrics' => 'required',
         ]);
 
+        $album = Album::where('album_name', '=', $validatedData['name']);
+        if ($album === null) {
+          $album = album::create([
+            'album_name' => $validatedData['album'],
+            'artist_name' => $validatedData['artist'],
+            'year' => $validatedData['year'],
+          ]);
+        }
 
         $song = song::create([
           'name' => $validatedData['name'],
+          'track_number' => $validatedData['track_number'],
+          'album_id' => $album->id,
           'artist' => $validatedData['artist'],
           'lyrics' => $validatedData['lyrics'],
         ]);
