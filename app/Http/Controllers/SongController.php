@@ -7,6 +7,7 @@ use App\Song;
 use App\Lyric;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use function GuzzleHttp\json_encode;
 
 class SongController extends Controller
@@ -27,8 +28,8 @@ class SongController extends Controller
           'year' => 'required',
           'lyrics' => 'required',
         ]);
-
-        $album = Album::where('album_name', '=', $validatedData['name']);
+      
+        $album = Album::where('album_name', $validatedData['album'])->first();
         if ($album === null) {
           $album = album::create([
             'album_name' => $validatedData['album'],
@@ -36,6 +37,8 @@ class SongController extends Controller
             'year' => $validatedData['year'],
           ]);
         }
+
+        Log::info((string) $album);
 
         $song = song::create([
           'name' => $validatedData['name'],

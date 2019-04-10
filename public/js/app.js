@@ -66579,6 +66579,9 @@ function (_Component) {
         component: _NewSong__WEBPACK_IMPORTED_MODULE_4__["default"]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
         path: "/songs/:id",
+        component: _SingleSong__WEBPACK_IMPORTED_MODULE_5__["default"]
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+        path: "/:id",
         component: _SongList__WEBPACK_IMPORTED_MODULE_7__["default"]
       }))));
     }
@@ -66805,14 +66808,15 @@ function (_Component) {
       var song = {
         name: this.state.name,
         track_number: this.state.track_number,
-        artist: this.state.artist,
         lyrics: this.state.lyrics,
+        artist: this.state.artist,
         album: this.state.album,
         year: this.state.year
       };
+      console.log(song);
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/songs', song).then(function (response) {
         // redirect to the homepage
-        console.log('New Song ID', response.data);
+        console.log('Response data', response.data);
         history.push("/".concat(response.data.id));
       }).catch(function (error) {
         _this2.setState({
@@ -66865,7 +66869,7 @@ function (_Component) {
       }), this.renderErrorFor('name')), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "form-group"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
-        htmlFor: "name"
+        htmlFor: "track_number"
       }, "Track Number"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
         id: "track_number",
         type: "integer",
@@ -66887,7 +66891,7 @@ function (_Component) {
       }), this.renderErrorFor('artist')), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "form-group"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
-        htmlFor: "artist"
+        htmlFor: "album"
       }, "Album"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
         id: "album",
         type: "text",
@@ -66901,12 +66905,12 @@ function (_Component) {
         htmlFor: "year"
       }, "Year"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
         id: "year",
-        type: "integer",
+        type: "text",
         className: "form-control ".concat(this.hasErrorFor('year') ? 'is-invalid' : ''),
         name: "year",
         value: this.state.year,
         onChange: this.handleFieldChange
-      }), this.renderErrorFor('album')), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+      }), this.renderErrorFor('year')), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "form-group"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
         htmlFor: "lyrics"
@@ -67131,7 +67135,7 @@ function (_Component) {
         className: "card-header"
       }, "Radiohead - OK Computer"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "card-header"
-      }, "In GIFs"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+      }, "In GIFs - This is the songlist"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "card-body"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
         className: "btn btn-primary btn-sm mb-3",
@@ -67141,7 +67145,7 @@ function (_Component) {
       }, songs.map(function (song) {
         return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
           className: "list-group-item list-group-item-action d-flex justify-content-between align-items-center song-list-item",
-          to: "/".concat(song.id),
+          to: "/songs/".concat(song.id),
           key: song.id
         }, song.name);
       })))))));

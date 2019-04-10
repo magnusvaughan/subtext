@@ -33,16 +33,18 @@ import axios from 'axios'
         const song = {
           name: this.state.name,
           track_number: this.state.track_number,
-          artist: this.state.artist,
           lyrics: this.state.lyrics,
+          artist: this.state.artist,
           album: this.state.album,
           year: this.state.year
         }
 
+        console.log(song);
+
         axios.post('/api/songs', song)
           .then(response => {
             // redirect to the homepage
-            console.log('New Song ID', response.data);
+            console.log('Response data', response.data);
             history.push(`/${response.data.id}`)
           })
           .catch(error => {
@@ -88,7 +90,7 @@ import axios from 'axios'
                         {this.renderErrorFor('name')}
                       </div>
                       <div className='form-group'>
-                        <label htmlFor='name'>Track Number</label>
+                        <label htmlFor='track_number'>Track Number</label>
                         <input
                           id='track_number'
                           type='integer'
@@ -112,7 +114,7 @@ import axios from 'axios'
                         {this.renderErrorFor('artist')}
                       </div>
                       <div className="form-group">
-                      <label htmlFor='artist'>Album</label>
+                      <label htmlFor='album'>Album</label>
                         <input
                           id='album'
                           type='text'
@@ -127,13 +129,13 @@ import axios from 'axios'
                       <label htmlFor='year'>Year</label>
                         <input
                           id='year'
-                          type='integer'
+                          type='text'
                           className={`form-control ${this.hasErrorFor('year') ? 'is-invalid' : ''}`}
                           name='year'
                           value={this.state.year}
                           onChange={this.handleFieldChange}
                         />
-                        {this.renderErrorFor('album')}
+                        {this.renderErrorFor('year')}
                       </div>
                       <div className='form-group'>
                         <label htmlFor='lyrics'>Song lyrics</label>

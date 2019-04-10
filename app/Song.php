@@ -12,4 +12,9 @@ class Song extends Model
     {
       return $this->hasMany(Lyric::class);
     }
+
+    public function album() 
+    {
+      return $this->belongsTo('App\Album');
+    }
 }
