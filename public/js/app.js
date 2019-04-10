@@ -66449,10 +66449,12 @@ function (_Component) {
       var _this2 = this;
 
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/albums').then(function (response) {
-        console.log(response);
+        var orderedAlbums = response.data.sort(function (a, b) {
+          return parseFloat(a.year) - parseFloat(b.year);
+        });
 
         _this2.setState({
-          albums: response.data
+          albums: orderedAlbums
         });
       });
     }
@@ -66481,7 +66483,7 @@ function (_Component) {
           className: "list-group-item list-group-item-action d-flex justify-content-between align-items-center song-list-item",
           to: "/albums/".concat(album.id),
           key: album.id
-        }, album.album_name);
+        }, album.album_name, " - ", album.year);
       })))))));
     }
   }]);
@@ -66817,7 +66819,7 @@ function (_Component) {
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/songs', song).then(function (response) {
         // redirect to the homepage
         console.log('Response data', response.data);
-        history.push("/".concat(response.data.id));
+        history.push("/songs/".concat(response.data.id));
       }).catch(function (error) {
         _this2.setState({
           errors: error.response.data.errors
@@ -67100,7 +67102,9 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(SongList).call(this));
     _this.state = {
-      songs: []
+      songs: [],
+      album_name: '',
+      'artist_name': ''
     };
     return _this;
   }
@@ -67112,17 +67116,22 @@ function (_Component) {
 
       var id = this.props.match.params.id;
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/albums/".concat(id)).then(function (response) {
-        console.log(response);
+        console.log("This is the response", response);
 
         _this2.setState({
-          songs: response.data.songs
+          songs: response.data.songs,
+          album_name: response.data.album_name,
+          artist_name: response.data.artist_name
         });
       });
     }
   }, {
     key: "render",
     value: function render() {
-      var songs = this.state.songs;
+      var _this$state = this.state,
+          songs = _this$state.songs,
+          album_name = _this$state.album_name,
+          artist_name = _this$state.artist_name;
       return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "container py-4"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
@@ -67133,9 +67142,9 @@ function (_Component) {
         className: "card"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "card-header"
-      }, "Radiohead - OK Computer"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+      }, artist_name, " - ", album_name), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "card-header"
-      }, "In GIFs - This is the songlist"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+      }, "In GIFs"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "card-body"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
         className: "btn btn-primary btn-sm mb-3",
@@ -67147,7 +67156,7 @@ function (_Component) {
           className: "list-group-item list-group-item-action d-flex justify-content-between align-items-center song-list-item",
           to: "/songs/".concat(song.id),
           key: song.id
-        }, song.name);
+        }, song.track_number, ". ", song.name);
       })))))));
     }
   }]);

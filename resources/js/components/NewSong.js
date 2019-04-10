@@ -45,7 +45,7 @@ import axios from 'axios'
           .then(response => {
             // redirect to the homepage
             console.log('Response data', response.data);
-            history.push(`/${response.data.id}`)
+            history.push(`/songs/${response.data.id}`)
           })
           .catch(error => {
             this.setState({

@@ -12,9 +12,9 @@ class AlbumList extends Component {
 
   componentDidMount () {
     axios.get('/api/albums').then(response => {
-      console.log(response);
+      var orderedAlbums = response.data.sort((a, b) => parseFloat(a.year) - parseFloat(b.year));
       this.setState({
-        albums: response.data
+        albums: orderedAlbums
       })
     })
   }
@@ -35,7 +35,7 @@ class AlbumList extends Component {
                       className='list-group-item list-group-item-action d-flex justify-content-between align-items-center song-list-item'
                       to={`/albums/${album.id}`}
                       key={album.id}
-                    >{album.album_name}
+                    >{album.album_name} - {album.year}
                     </Link>
                   ))}
                 </ul>
