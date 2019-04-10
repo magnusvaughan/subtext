@@ -2,50 +2,40 @@ import axios from 'axios'
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
-class SongList extends Component {
+class AlbumList extends Component {
   constructor () {
     super()
     this.state = {
-      songs: [],
-      album_name:'',
-      'artist_name':''
+      albums: []
     }
   }
 
   componentDidMount () {
-
-    const { id } = this.props.match.params
-
-    axios.get(`/api/albums/${id}`).then(response => {
-      console.log("This is the response", response);
+    axios.get('/api/albums').then(response => {
+      var orderedAlbums = response.data.sort((a, b) => parseFloat(a.year) - parseFloat(b.year));
       this.setState({
-        songs: response.data.songs,
-        album_name: response.data.album_name,
-        artist_name: response.data.artist_name,
+        albums: orderedAlbums
       })
     })
   }
 
   render () {
-    let { songs, album_name, artist_name } = this.state;
+    let { albums } = this.state;
     return (
       <div className='container py-4'>
         <div className='row justify-content-center'>
           <div className='col-md-8'>
             <div className='card'>
-              <div className='card-header'>{artist_name} - {album_name}</div>
+              <div className='card-header'>Radiohead - Albums</div>
               <div className='card-header'>In GIFs</div>
               <div className='card-body'>
-                <Link className='btn btn-primary btn-sm mb-3' to='/create/song'>
-                  Create new song
-                </Link>
                 <ul className='list-group list-group-flush song-list'>
-                  {songs.map(song => (
+                  {albums.map(album => (
                     <Link
                       className='list-group-item list-group-item-action d-flex justify-content-between align-items-center song-list-item'
-                      to={`/songs/${song.id}`}
-                      key={song.id}
-                    >{song.track_number}. {song.name}
+                      to={`/albums/${album.id}`}
+                      key={album.id}
+                    >{album.album_name} - {album.year}
                     </Link>
                   ))}
                 </ul>
@@ -58,4 +48,4 @@ class SongList extends Component {
   }
 }
 
-export default SongList
+export default AlbumList

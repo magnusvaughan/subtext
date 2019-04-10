@@ -6,10 +6,12 @@ import axios from 'axios'
         super(props)
         this.state = {
           name: '',
+          track_number: '',
           lyrics: '',
-          song: '',
-          errors: [],
-          results: []
+          artist: '',
+          album: '',
+          year: '',
+          errors: []
         }
         this.handleFieldChange = this.handleFieldChange.bind(this)
         this.handleCreateNewsong = this.handleCreateNewsong.bind(this)
@@ -31,14 +33,20 @@ import axios from 'axios'
 
         const song = {
           name: this.state.name,
+          track_number: this.state.track_number,
+          lyrics: this.state.lyrics,
           artist: this.state.artist,
-          lyrics: this.state.lyrics
+          album: this.state.album,
+          year: this.state.year
         }
+
+        console.log(song);
 
         axios.post('/api/songs', song)
           .then(response => {
-            // redirect to the homepage 
-            history.push(`/${response.data.id}`)
+            // redirect to the homepage
+            console.log('Response data', response.data);
+            history.push(`/songs/${response.data.id}`)
           })
           .catch(error => {
             this.setState({
@@ -102,9 +110,31 @@ import axios from 'axios'
                 <div className='card'>
                   <div className='card-header'>Reveal the subtext</div>
                   <div className='card-body'>
-
-                    <form onSubmit={this.handleSearchSong}>
-
+                    <form onSubmit={this.handleCreateNewsong}>
+                      <div className='form-group'>
+                        <label htmlFor='name'>Song Name</label>
+                        <input
+                          id='name'
+                          type='text'
+                          className={`form-control ${this.hasErrorFor('name') ? 'is-invalid' : ''}`}
+                          name='name'
+                          value={this.state.name}
+                          onChange={this.handleFieldChange}
+                        />
+                        {this.renderErrorFor('name')}
+                      </div>
+                      <div className='form-group'>
+                        <label htmlFor='track_number'>Track Number</label>
+                        <input
+                          id='track_number'
+                          type='integer'
+                          className={`form-control ${this.hasErrorFor('track_number') ? 'is-invalid' : ''}`}
+                          name='track_number'
+                          value={this.state.track_number}
+                          onChange={this.handleFieldChange}
+                        />
+                        {this.renderErrorFor('track_number')}
+                      </div>
                       <div className="form-group">
                       <label htmlFor='song'>Search for a song</label>
                         <input
@@ -117,7 +147,43 @@ import axios from 'axios'
                         />
                         {this.renderErrorFor('song')}
                       </div>
-                      <button className='btn btn-primary'>Search</button>
+                      <div className="form-group">
+                      <label htmlFor='album'>Album</label>
+                        <input
+                          id='album'
+                          type='text'
+                          className={`form-control ${this.hasErrorFor('album') ? 'is-invalid' : ''}`}
+                          name='album'
+                          value={this.state.album}
+                          onChange={this.handleFieldChange}
+                        />
+                        {this.renderErrorFor('album')}
+                      </div>
+                      <div className="form-group">
+                      <label htmlFor='year'>Year</label>
+                        <input
+                          id='year'
+                          type='text'
+                          className={`form-control ${this.hasErrorFor('year') ? 'is-invalid' : ''}`}
+                          name='year'
+                          value={this.state.year}
+                          onChange={this.handleFieldChange}
+                        />
+                        {this.renderErrorFor('year')}
+                      </div>
+                      <div className='form-group'>
+                        <label htmlFor='lyrics'>Song lyrics</label>
+                        <textarea
+                          id='lyrics'
+                          className={`form-control ${this.hasErrorFor('lyrics') ? 'is-invalid' : ''}`}
+                          name='lyrics'
+                          rows='10'
+                          value={this.state.lyrics}
+                          onChange={this.handleFieldChange}
+                        />
+                        {this.renderErrorFor('lyrics')}
+                      </div>
+                      <button className='btn btn-primary'>Create</button>
                     </form>
                   </div>
                 </div>

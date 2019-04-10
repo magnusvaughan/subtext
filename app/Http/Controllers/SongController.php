@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Album;
 use App\Song;
 use App\Lyric;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
-use Goutte\Client as GoutteClient;
+use Illuminate\Support\Facades\Log;
+use function GuzzleHttp\json_encode;
 
 class SongController extends Controller
 {
@@ -16,42 +18,32 @@ class SongController extends Controller
         return $song;
       }
 
-      public function search(Request $request) {
-
-        $validatedData = $request->validate([
-          'song' => 'required'
-        ]);
-
-        $song_array = explode(" ", $validatedData['song']);
-        $song_string = join("+", $song_array);
-
-        $request_url = "https://www.lyrics.com/lyrics/" .  $song_string;
-
-        $client = new GoutteClient();
-        $artist_crawler = $client->request('GET', $request_url);
-
-        $data = $artist_crawler->filter('.sec-lyric.clearfix')->each(function ($node){
-          $href  = $node->filter('.lyric-meta-title a')->attr('href');
-          $song_name  = $node->filter('.lyric-meta-title a')->text();
-          $artist_name  = $node->filter('.lyric-meta-artists a')->text();
-    
-          return compact('href', 'song_name', 'artist_name');
-        });
-
-        return $data;
-      }
-
       public function store(Request $request)
       {
         $validatedData = $request->validate([
           'name' => 'required',
+          'track_number' => 'required',
           'artist' => 'required',
+          'album' => 'required',
+          'year' => 'required',
           'lyrics' => 'required',
         ]);
+      
+        $album = Album::where('album_name', $validatedData['album'])->first();
+        if ($album === null) {
+          $album = album::create([
+            'album_name' => $validatedData['album'],
+            'artist_name' => $validatedData['artist'],
+            'year' => $validatedData['year'],
+          ]);
+        }
 
+        Log::info((string) $album);
 
         $song = song::create([
           'name' => $validatedData['name'],
+          'track_number' => $validatedData['track_number'],
+          'album_id' => $album->id,
           'artist' => $validatedData['artist'],
           'lyrics' => $validatedData['lyrics'],
         ]);

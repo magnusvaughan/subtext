@@ -4,8 +4,9 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Header from './Header'
 import NewSong from './NewSong'
 import SingleSong from './SingleSong'
-import MainMenu from './MainMenu'
+import LyricsList from './LyricsList'
 import SongList from './SongList'
+import AlbumList from './AlbumList'
 import ReactGA from 'react-ga';
 
 ReactGA.initialize('UA-137553389-1');
@@ -19,10 +20,13 @@ class App extends Component {
         <div>
             <Header />
             <Switch>
-                <Route exact path='/' component={SongList} />
+                <Route exact path='/' component={AlbumList} />
+                <Route path='/albums/:id' component={SongList} />
+                <Route exact path='/lyrics' component={LyricsList} />
                 <Route exact path='/songs' component={SongList} />
-                <Route exact path='/create/song' component={NewSong} />
-                <Route path='/:id' component={SingleSong} />
+                <Route path='/create/song' component={NewSong} />
+                <Route path='/songs/:id' component={SingleSong} />
+                <Route path='/:id' component={SongList} />
             </Switch>
         </div>
         </BrowserRouter>
