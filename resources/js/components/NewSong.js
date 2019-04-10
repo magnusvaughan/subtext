@@ -15,7 +15,6 @@ import axios from 'axios'
         }
         this.handleFieldChange = this.handleFieldChange.bind(this)
         this.handleCreateNewsong = this.handleCreateNewsong.bind(this)
-        this.handleSearchSong = this.handleSearchSong.bind(this)
         this.hasErrorFor = this.hasErrorFor.bind(this)
         this.renderErrorFor = this.renderErrorFor.bind(this)
       }
@@ -47,38 +46,6 @@ import axios from 'axios'
             // redirect to the homepage
             console.log('Response data', response.data);
             history.push(`/songs/${response.data.id}`)
-          })
-          .catch(error => {
-            this.setState({
-              errors: error.response.data.errors
-            })
-          })
-      }
-
-      handleSearchSong(event) {
-
-        const { history } = this.props
-
-        event.preventDefault()
-        const song = {
-          song: this.state.song
-        }
-
-        console.log(song);
-
-        axios.post('/api/songs/search', song)
-          .then(response => {
-            console.log(response);
-            if(response.data = {}) {
-              this.setState({
-                results: [{href:"#", song_name: "No results found - please search again"}]
-              })
-            }
-            else {
-              this.setState({
-                results: response.data
-              })
-            }
           })
           .catch(error => {
             this.setState({
@@ -136,16 +103,16 @@ import axios from 'axios'
                         {this.renderErrorFor('track_number')}
                       </div>
                       <div className="form-group">
-                      <label htmlFor='song'>Search for a song</label>
+                      <label htmlFor='artist'>Artist</label>
                         <input
-                          id='song'
+                          id='artist'
                           type='text'
-                          className={`form-control ${this.hasErrorFor('song') ? 'is-invalid' : ''}`}
-                          name='song'
-                          value={this.state.song}
+                          className={`form-control ${this.hasErrorFor('artist') ? 'is-invalid' : ''}`}
+                          name='artist'
+                          value={this.state.artist}
                           onChange={this.handleFieldChange}
                         />
-                        {this.renderErrorFor('song')}
+                        {this.renderErrorFor('artist')}
                       </div>
                       <div className="form-group">
                       <label htmlFor='album'>Album</label>
@@ -186,19 +153,6 @@ import axios from 'axios'
                       <button className='btn btn-primary'>Create</button>
                     </form>
                   </div>
-                </div>
-                <div className='card-header'></div>
-                  <div className='card-body'>
-                    <ul className='list-group mt-3'>
-                      {results.map(result => (
-                        <li
-                          className='list-group-item d-flex align-items-center turn'
-                          key={result.key}
-                        > 
-                        <a href={result.href}>{result.song_name} by {result.artist_name}</a>
-                        </li>
-                      ))}
-                    </ul>
                 </div>
               </div>
             </div>

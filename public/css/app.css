@@ -10663,6 +10663,7 @@ a.text-dark:focus {
 
 .navbar-light .navbar-brand {
   color: white;
+  font-size: 2rem;
 }
 
 .navbar-light .navbar-brand:hover {
@@ -10722,9 +10723,12 @@ img {
 }
 
 .list-group-item img {
-  -webkit-filter: grayscale(100%);
-          filter: grayscale(100%);
   transition: all 0.8s;
+}
+
+.list-group-item img.album-cover {
+  -webkit-filter: grayscale(0%);
+          filter: grayscale(0%);
 }
 
 .list-group-item img:hover {

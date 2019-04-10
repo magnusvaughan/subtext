@@ -17,7 +17,7 @@ class SongList extends Component {
     const { id } = this.props.match.params
 
     axios.get(`/api/albums/${id}`).then(response => {
-      console.log("This is the response", response);
+      var orderedSongs = response.data.songs.sort((a, b) => parseFloat(a.track_number) - parseFloat(b.track_number));
       this.setState({
         songs: response.data.songs,
         album_name: response.data.album_name,

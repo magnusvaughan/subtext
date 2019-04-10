@@ -66463,28 +66463,22 @@ function (_Component) {
     value: function render() {
       var albums = this.state.albums;
       return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "container py-4"
+        className: "container py-2"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "row justify-content-center"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "col-md-8"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "card"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "card-header"
-      }, "Radiohead - Albums"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "card-header"
-      }, "In GIFs"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "card-body"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("ul", {
-        className: "list-group list-group-flush song-list"
+        className: "row align-items-center justify-content-center"
       }, albums.map(function (album) {
-        return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+        return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+          className: "col-md-3"
+        }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
           className: "list-group-item list-group-item-action d-flex justify-content-between align-items-center song-list-item",
           to: "/albums/".concat(album.id),
           key: album.id
-        }, album.album_name, " - ", album.year);
-      })))))));
+        }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
+          class: "album-cover",
+          src: 'images/' + album.cover_image,
+          alt: ""
+        })));
+      })));
     }
   }]);
 
@@ -66620,7 +66614,7 @@ var Header = function Header() {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     className: "navbar-brand",
     to: "/"
-  }, "Home")));
+  }, "\u21B0")));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Header);
@@ -66737,9 +66731,203 @@ function (_Component) {
   !*** ./resources/js/components/NewSong.js ***!
   \********************************************/
 /*! exports provided: default */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /Users/magnusvaughan/side/subtext/resources/js/components/NewSong.js: Unexpected token (11:0)\n\n\u001b[0m \u001b[90m  9 | \u001b[39m          track_number\u001b[33m:\u001b[39m \u001b[32m''\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 10 | \u001b[39m          lyrics\u001b[33m:\u001b[39m \u001b[32m''\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 11 | \u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<\u001b[39m \u001b[33mHEAD\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m    | \u001b[39m\u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 12 | \u001b[39m          song\u001b[33m:\u001b[39m \u001b[32m''\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 13 | \u001b[39m          errors\u001b[33m:\u001b[39m []\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 14 | \u001b[39m          results\u001b[33m:\u001b[39m []\u001b[0m\n    at Object.raise (/Users/magnusvaughan/side/subtext/node_modules/@babel/parser/lib/index.js:3851:17)\n    at Object.unexpected (/Users/magnusvaughan/side/subtext/node_modules/@babel/parser/lib/index.js:5165:16)\n    at Object.parseIdentifierName (/Users/magnusvaughan/side/subtext/node_modules/@babel/parser/lib/index.js:7009:18)\n    at Object.parseIdentifier (/Users/magnusvaughan/side/subtext/node_modules/@babel/parser/lib/index.js:6987:23)\n    at Object.parseMaybePrivateName (/Users/magnusvaughan/side/subtext/node_modules/@babel/parser/lib/index.js:6352:19)\n    at Object.parsePropertyName (/Users/magnusvaughan/side/subtext/node_modules/@babel/parser/lib/index.js:6808:98)\n    at Object.parseObjectMember (/Users/magnusvaughan/side/subtext/node_modules/@babel/parser/lib/index.js:6709:10)\n    at Object.parseObj (/Users/magnusvaughan/side/subtext/node_modules/@babel/parser/lib/index.js:6643:25)\n    at Object.parseExprAtom (/Users/magnusvaughan/side/subtext/node_modules/@babel/parser/lib/index.js:6276:21)\n    at Object.parseExprAtom (/Users/magnusvaughan/side/subtext/node_modules/@babel/parser/lib/index.js:3570:20)\n    at Object.parseExprSubscripts (/Users/magnusvaughan/side/subtext/node_modules/@babel/parser/lib/index.js:5916:23)\n    at Object.parseMaybeUnary (/Users/magnusvaughan/side/subtext/node_modules/@babel/parser/lib/index.js:5896:21)\n    at Object.parseExprOps (/Users/magnusvaughan/side/subtext/node_modules/@babel/parser/lib/index.js:5783:23)\n    at Object.parseMaybeConditional (/Users/magnusvaughan/side/subtext/node_modules/@babel/parser/lib/index.js:5756:23)\n    at Object.parseMaybeAssign (/Users/magnusvaughan/side/subtext/node_modules/@babel/parser/lib/index.js:5703:21)\n    at Object.parseMaybeAssign (/Users/magnusvaughan/side/subtext/node_modules/@babel/parser/lib/index.js:5742:25)\n    at Object.parseExpression (/Users/magnusvaughan/side/subtext/node_modules/@babel/parser/lib/index.js:5651:23)\n    at Object.parseStatementContent (/Users/magnusvaughan/side/subtext/node_modules/@babel/parser/lib/index.js:7422:23)\n    at Object.parseStatement (/Users/magnusvaughan/side/subtext/node_modules/@babel/parser/lib/index.js:7293:17)\n    at Object.parseBlockOrModuleBlockBody (/Users/magnusvaughan/side/subtext/node_modules/@babel/parser/lib/index.js:7879:25)\n    at Object.parseBlockBody (/Users/magnusvaughan/side/subtext/node_modules/@babel/parser/lib/index.js:7866:10)\n    at Object.parseBlock (/Users/magnusvaughan/side/subtext/node_modules/@babel/parser/lib/index.js:7850:10)\n    at Object.parseFunctionBody (/Users/magnusvaughan/side/subtext/node_modules/@babel/parser/lib/index.js:6911:24)\n    at Object.parseFunctionBodyAndFinish (/Users/magnusvaughan/side/subtext/node_modules/@babel/parser/lib/index.js:6881:10)\n    at Object.parseMethod (/Users/magnusvaughan/side/subtext/node_modules/@babel/parser/lib/index.js:6837:10)\n    at Object.pushClassMethod (/Users/magnusvaughan/side/subtext/node_modules/@babel/parser/lib/index.js:8272:30)\n    at Object.parseClassMemberWithIsStatic (/Users/magnusvaughan/side/subtext/node_modules/@babel/parser/lib/index.js:8197:12)\n    at Object.parseClassMember (/Users/magnusvaughan/side/subtext/node_modules/@babel/parser/lib/index.js:8136:10)\n    at withTopicForbiddingContext (/Users/magnusvaughan/side/subtext/node_modules/@babel/parser/lib/index.js:8091:14)\n    at Object.withTopicForbiddingContext (/Users/magnusvaughan/side/subtext/node_modules/@babel/parser/lib/index.js:7187:14)\n    at Object.parseClassBody (/Users/magnusvaughan/side/subtext/node_modules/@babel/parser/lib/index.js:8068:10)\n    at Object.parseClass (/Users/magnusvaughan/side/subtext/node_modules/@babel/parser/lib/index.js:8042:22)\n    at Object.parseStatementContent (/Users/magnusvaughan/side/subtext/node_modules/@babel/parser/lib/index.js:7335:21)\n    at Object.parseStatement (/Users/magnusvaughan/side/subtext/node_modules/@babel/parser/lib/index.js:7293:17)\n    at Object.parseBlockOrModuleBlockBody (/Users/magnusvaughan/side/subtext/node_modules/@babel/parser/lib/index.js:7879:25)\n    at Object.parseBlockBody (/Users/magnusvaughan/side/subtext/node_modules/@babel/parser/lib/index.js:7866:10)");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+var NewSong =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(NewSong, _Component);
+
+  function NewSong(props) {
+    var _this;
+
+    _classCallCheck(this, NewSong);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(NewSong).call(this, props));
+    _this.state = {
+      name: '',
+      track_number: '',
+      lyrics: '',
+      artist: '',
+      album: '',
+      year: '',
+      errors: []
+    };
+    _this.handleFieldChange = _this.handleFieldChange.bind(_assertThisInitialized(_this));
+    _this.handleCreateNewsong = _this.handleCreateNewsong.bind(_assertThisInitialized(_this));
+    _this.hasErrorFor = _this.hasErrorFor.bind(_assertThisInitialized(_this));
+    _this.renderErrorFor = _this.renderErrorFor.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(NewSong, [{
+    key: "handleFieldChange",
+    value: function handleFieldChange(event) {
+      this.setState(_defineProperty({}, event.target.name, event.target.value));
+    }
+  }, {
+    key: "handleCreateNewsong",
+    value: function handleCreateNewsong(event) {
+      var _this2 = this;
+
+      event.preventDefault();
+      var history = this.props.history;
+      var song = {
+        name: this.state.name,
+        track_number: this.state.track_number,
+        lyrics: this.state.lyrics,
+        artist: this.state.artist,
+        album: this.state.album,
+        year: this.state.year
+      };
+      console.log(song);
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/songs', song).then(function (response) {
+        // redirect to the homepage
+        console.log('Response data', response.data);
+        history.push("/songs/".concat(response.data.id));
+      }).catch(function (error) {
+        _this2.setState({
+          errors: error.response.data.errors
+        });
+      });
+    }
+  }, {
+    key: "hasErrorFor",
+    value: function hasErrorFor(field) {
+      return !!this.state.errors[field];
+    }
+  }, {
+    key: "renderErrorFor",
+    value: function renderErrorFor(field) {
+      if (this.hasErrorFor(field)) {
+        return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("span", {
+          className: "invalid-feedback"
+        }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("strong", null, this.state.errors[field][0]));
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var results = this.state.results;
+      return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "container py-4"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "row justify-content-center"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "col-md-6"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "card"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "card-header"
+      }, "Reveal the subtext"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "card-body"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("form", {
+        onSubmit: this.handleCreateNewsong
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "form-group"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
+        htmlFor: "name"
+      }, "Song Name"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
+        id: "name",
+        type: "text",
+        className: "form-control ".concat(this.hasErrorFor('name') ? 'is-invalid' : ''),
+        name: "name",
+        value: this.state.name,
+        onChange: this.handleFieldChange
+      }), this.renderErrorFor('name')), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "form-group"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
+        htmlFor: "track_number"
+      }, "Track Number"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
+        id: "track_number",
+        type: "integer",
+        className: "form-control ".concat(this.hasErrorFor('track_number') ? 'is-invalid' : ''),
+        name: "track_number",
+        value: this.state.track_number,
+        onChange: this.handleFieldChange
+      }), this.renderErrorFor('track_number')), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "form-group"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
+        htmlFor: "artist"
+      }, "Artist"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
+        id: "artist",
+        type: "text",
+        className: "form-control ".concat(this.hasErrorFor('artist') ? 'is-invalid' : ''),
+        name: "artist",
+        value: this.state.artist,
+        onChange: this.handleFieldChange
+      }), this.renderErrorFor('artist')), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "form-group"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
+        htmlFor: "album"
+      }, "Album"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
+        id: "album",
+        type: "text",
+        className: "form-control ".concat(this.hasErrorFor('album') ? 'is-invalid' : ''),
+        name: "album",
+        value: this.state.album,
+        onChange: this.handleFieldChange
+      }), this.renderErrorFor('album')), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "form-group"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
+        htmlFor: "year"
+      }, "Year"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
+        id: "year",
+        type: "text",
+        className: "form-control ".concat(this.hasErrorFor('year') ? 'is-invalid' : ''),
+        name: "year",
+        value: this.state.year,
+        onChange: this.handleFieldChange
+      }), this.renderErrorFor('year')), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "form-group"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
+        htmlFor: "lyrics"
+      }, "Song lyrics"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("textarea", {
+        id: "lyrics",
+        className: "form-control ".concat(this.hasErrorFor('lyrics') ? 'is-invalid' : ''),
+        name: "lyrics",
+        rows: "10",
+        value: this.state.lyrics,
+        onChange: this.handleFieldChange
+      }), this.renderErrorFor('lyrics')), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+        className: "btn btn-primary"
+      }, "Create")))))));
+    }
+  }]);
+
+  return NewSong;
+}(react__WEBPACK_IMPORTED_MODULE_1__["Component"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (NewSong);
 
 /***/ }),
 
@@ -66923,7 +67111,9 @@ function (_Component) {
 
       var id = this.props.match.params.id;
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/albums/".concat(id)).then(function (response) {
-        console.log("This is the response", response);
+        var orderedSongs = response.data.songs.sort(function (a, b) {
+          return parseFloat(a.track_number) - parseFloat(b.track_number);
+        });
 
         _this2.setState({
           songs: response.data.songs,

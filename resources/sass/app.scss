@@ -19,6 +19,7 @@
 
 .navbar-light .navbar-brand {
   color: white;
+  font-size: 2rem;
   &:hover {
     color: darken(white, 40%);
   }
@@ -51,7 +52,6 @@ img {
   max-width: 100%;
   width: 100%;
   height: auto;
-  // overflow: hidden;
 }
 
 // Turns
@@ -76,8 +76,11 @@ img {
   border-left: 1px solid rgba(210, 210, 210, 1); 
   margin-bottom: 2rem;
   img {
-    filter: grayscale(100%);
+    // filter: grayscale(100%);
     transition: all 0.8s;
+    &.album-cover {
+      filter: grayscale(0%);
+    }
     &:hover {
       filter: grayscale(0%);
     }

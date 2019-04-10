@@ -6,7 +6,7 @@
     const Header = () => (
       <nav className='navbar navbar-expand-md navbar-light navbar-laravel'>
         <div className='container'>
-          <Link className='navbar-brand' to='/'>Home</Link>
+          <Link className='navbar-brand' to='/'>&#x21B0;</Link>
         </div>
       </nav>
     )
