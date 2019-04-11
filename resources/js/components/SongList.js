@@ -34,7 +34,6 @@ class SongList extends Component {
           <div className='col-md-8'>
             <div className='card'>
               <div className='card-header'>{artist_name} - {album_name}</div>
-              <div className='card-header'>In GIFs</div>
               <div className='card-body'>
                 <Link className='btn btn-primary btn-sm mb-3' to='/create/song'>
                   Create new song

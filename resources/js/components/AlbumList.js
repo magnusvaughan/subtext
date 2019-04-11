@@ -31,7 +31,7 @@ class AlbumList extends Component {
               to={`/albums/${album.id}`}
               key={album.id}
             >
-            <img class="album-cover" src={'images/'+album.cover_image} alt=""/>
+            <img class="album-cover" src={album.cover_image} alt=""/>
             {/* {album.album_name} - {album.year} */}
             </Link>
           </div>
