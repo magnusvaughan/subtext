@@ -44,7 +44,7 @@ class SingleSong extends Component {
         <div className='row justify-content-center'>
           <div className='col-md-9'>
             <div className='card'>
-              <div className='card-header'>{song.name} - {song.artist}</div>
+              <div className='card-header'>{song.name}</div>
               <div className='card-body'>
                 <p>{song.description}</p>
 

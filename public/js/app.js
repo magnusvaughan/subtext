@@ -67026,7 +67026,7 @@ function (_Component) {
         className: "card"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "card-header"
-      }, song.name, " - ", song.artist), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+      }, song.name), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "card-body"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, song.description), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("ul", {
         className: "list-group mt-3"
@@ -67141,7 +67141,10 @@ function (_Component) {
         className: "card-header"
       }, artist_name, " - ", album_name), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "card-body"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("ul", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+        className: "btn btn-primary btn-sm mb-3",
+        to: "/create/song"
+      }, "Create new song"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("ul", {
         className: "list-group list-group-flush song-list"
       }, songs.map(function (song) {
         return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
