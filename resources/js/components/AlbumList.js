@@ -25,14 +25,12 @@ class AlbumList extends Component {
       <div className='container py-2'>
         <div className="row align-items-center justify-content-center">
         {albums.map(album => (
-          <div className="col-md-3">
+          <div className="col-md-3" key={album.id}>
             <Link
               className='list-group-item list-group-item-action d-flex justify-content-between align-items-center song-list-item'
               to={`/albums/${album.id}`}
-              key={album.id}
             >
-            <img class="album-cover" src={album.cover_image} alt=""/>
-            {/* {album.album_name} - {album.year} */}
+            <img className="album-cover" src={album.cover_image} alt="album.name"/>
             </Link>
           </div>
         ))}

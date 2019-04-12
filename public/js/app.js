@@ -66468,15 +66468,15 @@ function (_Component) {
         className: "row align-items-center justify-content-center"
       }, albums.map(function (album) {
         return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-          className: "col-md-3"
+          className: "col-md-3",
+          key: album.id
         }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
           className: "list-group-item list-group-item-action d-flex justify-content-between align-items-center song-list-item",
-          to: "/albums/".concat(album.id),
-          key: album.id
+          to: "/albums/".concat(album.id)
         }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
-          class: "album-cover",
+          className: "album-cover",
           src: album.cover_image,
-          alt: ""
+          alt: "album.name"
         })));
       })));
     }
