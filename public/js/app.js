@@ -66463,7 +66463,7 @@ function (_Component) {
     value: function render() {
       var albums = this.state.albums;
       return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "container py-2"
+        className: "container-fluid py-2"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "row align-items-center justify-content-center"
       }, albums.map(function (album) {
@@ -66473,7 +66473,7 @@ function (_Component) {
         }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
           className: "list-group-item list-group-item-action d-flex justify-content-between align-items-center song-list-item",
           to: "/albums/".concat(album.id)
-        }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
+        }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("span", null, album.album_name), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
           className: "album-cover",
           src: album.cover_image,
           alt: "album.name"
@@ -66607,14 +66607,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var Header = function Header() {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
     className: "navbar navbar-expand-md navbar-light navbar-laravel"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "container"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     className: "navbar-brand",
     to: "/"
-  }, "\u21B0")));
+  }, "\u21B0"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+    className: "site-header"
+  }, "Radiohead - In GIFs"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Header);
@@ -67134,21 +67136,28 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "row justify-content-center"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "col-md-8"
+        className: "col-md-12"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "card"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "card-header"
       }, artist_name, " - ", album_name), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "card-body"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("ul", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+        className: "btn btn-primary btn-sm mb-3",
+        to: "/create/song"
+      }, "Create new song"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("ul", {
         className: "list-group list-group-flush song-list"
       }, songs.map(function (song) {
         return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
           className: "list-group-item list-group-item-action d-flex justify-content-between align-items-center song-list-item",
           to: "/songs/".concat(song.id),
           key: song.id
-        }, song.track_number, ". ", song.name);
+        }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("span", null, song.track_number, ". ", song.name), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
+          className: "album-cover",
+          src: song.song_image,
+          alt: "{song.name}"
+        }));
       })))))));
     }
   }]);

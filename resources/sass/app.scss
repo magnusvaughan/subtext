@@ -24,6 +24,12 @@
   }
 }
 
+.site-header {
+  color: white;
+  text-align: center;
+  padding-bottom: 3rem;
+}
+
 .card {
   border: none;
 }
@@ -76,11 +82,13 @@ img {
   border-left: 1px solid rgba(210, 210, 210, 1); 
   margin-bottom: 2rem;
   font-family: 'Raleway', serif;
+  min-width: 70%;
   img {
     // filter: grayscale(100%);
     transition: all 0.8s;
     &.album-cover {
       filter: grayscale(0%);
+      min-width: 160px;
     }
     &:hover {
       filter: grayscale(0%);

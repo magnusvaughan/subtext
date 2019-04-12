@@ -31,20 +31,21 @@ class SongList extends Component {
     return (
       <div className='container py-4'>
         <div className='row justify-content-center'>
-          <div className='col-md-8'>
+          <div className='col-md-12'>
             <div className='card'>
               <div className='card-header'>{artist_name} - {album_name}</div>
               <div className='card-body'>
-                {/* <Link className='btn btn-primary btn-sm mb-3' to='/create/song'>
+                <Link className='btn btn-primary btn-sm mb-3' to='/create/song'>
                   Create new song
-                </Link> */}
+                </Link>
                 <ul className='list-group list-group-flush song-list'>
                   {songs.map(song => (
                     <Link
                       className='list-group-item list-group-item-action d-flex justify-content-between align-items-center song-list-item'
                       to={`/songs/${song.id}`}
                       key={song.id}
-                    >{song.track_number}. {song.name}
+                    ><span>{song.track_number}. {song.name}</span>
+                    <img className="album-cover" src={song.song_image} alt="{song.name}"/>
                     </Link>
                   ))}
                 </ul>

@@ -22,7 +22,7 @@ class AlbumList extends Component {
   render () {
     let { albums } = this.state;
     return (
-      <div className='container py-2'>
+      <div className='container-fluid py-2'>
         <div className="row align-items-center justify-content-center">
         {albums.map(album => (
           <div className="col-md-3" key={album.id}>
@@ -30,6 +30,7 @@ class AlbumList extends Component {
               className='list-group-item list-group-item-action d-flex justify-content-between align-items-center song-list-item'
               to={`/albums/${album.id}`}
             >
+            <span>{album.album_name}</span>
             <img className="album-cover" src={album.cover_image} alt="album.name"/>
             </Link>
           </div>
