@@ -8,6 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Radiohead in GIFs</title>
     <!-- Styles -->
+    <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
